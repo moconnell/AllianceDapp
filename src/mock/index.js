@@ -25,28 +25,28 @@ export const MOCK_TIMES =  [
       seconds:0
     },
     {
-      hours:12,
-      minutes:30,
-      seconds:0
-    },
-    {
-      hours:11,
+      hours:13,
       minutes:0,
       seconds:0
     },
     {
-      hours:11,
+      hours:13,
       minutes:30,
       seconds:0
     },
     {
-      hours:12,
+      hours:14,
       minutes:0,
       seconds:0
     },
     {
-      hours:12,
+      hours:14,
       minutes:30,
+      seconds:0
+    },
+    {
+      hours:15,
+      minutes:0,
       seconds:0
     },
   ]
