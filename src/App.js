@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "./App.css";
 import { Calendar } from "./components/Calendar";
 import { MeetingCard } from "./components/MeetingCard";
+import { MeetingCardList } from "./components/MeetingCardList";
 import { ModalComponent } from "./components/Modal";
 import { ChakraProvider } from "@chakra-ui/react";
 import { LoadingTransaction } from "./components/Modal/components/LoadingTransaction";
 import { TimeList } from "./components/TimeList";
-import { MOCK_MEETING, MOCK_TIMES } from "./mock";
+import { MOCK_MEETINGS, MOCK_TIMES } from "./mock";
 export default function App() {
   const [selectedTime, setselectedTime] = useState(null);
 
@@ -32,7 +33,7 @@ export default function App() {
             console.log(date);
           }}
         />
-        <MeetingCard meeting={MOCK_MEETING} />
+        <MeetingCardList meetings={MOCK_MEETINGS} />
         <TimeList
           selectedTime={selectedTime}
           onChange={(time) => {
