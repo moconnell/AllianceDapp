@@ -52,4 +52,4 @@ export const MOCK_TIMES =  [
   ]
 
 
-export const MOCK_MEETING ={attendee:"John Salchichon" ,date:new Date() ,endDate:new Date(new Date().setHours(23)), description:"Meeting to discuss the next steps in the Raid Guild World Domination Schedule "}
+export const MOCK_MEETING ={attendee:"William Wallace" ,date:new Date() ,endDate:new Date(new Date().setHours(23)), description:"Meeting to discuss the next steps in the Raid Guild World Domination Schedule "}
