@@ -24,3 +24,4 @@ export function TimeList({times,onChange,selectedTime,duration}){
     
     )
 }
+
