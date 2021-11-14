@@ -1,7 +1,7 @@
 import './styles.css'
 import ReactCalendar from 'react-calendar'
 
-export function Calendar({onChange   }){
+export function Calendar({onChange,defaultValue   }){
             
             return  <ReactCalendar
             onDrillDown={({ activeStartDate, view }) =>
@@ -11,6 +11,7 @@ export function Calendar({onChange   }){
               view === "month" && date.getDay() === 0 ? "" : null
             }
             onChange={onChange}
+            defaultValue={defaultValue}
           />
 
 }
