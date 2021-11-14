@@ -1,8 +1,17 @@
 import { TimeItem } from "./components/TimeItem"
-import { TimeContainer } from "./styles"
-
-export function TimeList({times,onChange,selectedTime}){
+import { Container, InlineContainer, StyledSubtitle, StyledTitle, TimeContainer } from "./styles"
+import {ReactComponent as Clock} from '../../assets/clock.svg'
+export function TimeList({times,onChange,selectedTime,duration}){
     return (
+        <Container>
+        <StyledTitle>Select a time </StyledTitle>
+        <InlineContainer>
+
+        <InlineContainer>
+        <Clock/>
+        </InlineContainer>
+        <StyledSubtitle> {duration} min</StyledSubtitle>
+        </InlineContainer>
         <TimeContainer>
             {times.map(({hours,minutes,seconds},index)=>(
                     <TimeItem active={(hours===selectedTime?.hours && minutes=== selectedTime?.minutes)} onClick={(e)=>{
@@ -11,5 +20,7 @@ export function TimeList({times,onChange,selectedTime}){
                     }} key={index+"key"} hours={hours} minutes={minutes} seconds={seconds} />
             ))}
         </TimeContainer>
+        </Container>
+    
     )
 }

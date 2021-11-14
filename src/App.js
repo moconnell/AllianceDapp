@@ -18,7 +18,9 @@ export default function App() {
           }}
           times={
            MOCK_TIMES
-          } />
+          } 
+          duration={60}
+          />
     </main>
   )
 }
