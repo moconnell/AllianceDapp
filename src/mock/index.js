@@ -53,7 +53,32 @@ export const MOCK_TIMES =  [
 
 
 export const MOCK_MEETING ={attendee:"William Wallace" ,date:new Date() ,endDate:new Date(new Date().setHours(23)), description:"Meeting to discuss the next steps in the Raid Guild World Domination Schedule "}
-
+export const MOCK_MEETINGS = [
+  {
+    attendee:"William Wallace" ,
+  date:new Date() ,
+  endDate:new Date(new Date().setHours(6)),
+   description:"Meeting to discuss the next steps in the Raid Guild World Domination Schedule "
+  },
+  {
+    attendee:"Brendan Brandon" ,
+  date:new Date(new Date().setHours(10)) ,
+  endDate:new Date(new Date().setHours(11)),
+   description:"Meeting to discuss important stuff "
+  },
+  {
+    attendee:"Matt Murdock" ,
+  date:new Date(new Date().setHours(15)) ,
+  endDate:new Date(new Date().setHours(16)),
+   description:"Visual impaired Society Town Hall "
+  },
+  {
+    attendee:"Jhon Salvatore" ,
+  date:new Date(new Date().setHours(23)) ,
+  endDate:new Date(new Date().setHours(24)),
+   description:"Pizza Party!"
+  },
+]
 
 export const MOCK_PROFILE = {
   address:"0x309D80bd9610696b861af6fD51947e7d169bb16C",
