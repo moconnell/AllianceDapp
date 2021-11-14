@@ -1,3 +1,4 @@
 export function getMeridian(hour,minutes){
-        return hour > 12 ? `${hour-12}:${minutes}PM` : `${hour}:${minutes}AM`
+       const formattedMinutes =  minutes>9 ? minutes : `0${minutes}`
+        return hour > 12 ? `${hour-12}:${formattedMinutes}PM` : `${hour}:${formattedMinutes}AM`
 }
