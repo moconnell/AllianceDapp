@@ -4,7 +4,6 @@ import { Calendar } from "./components/Calendar";
 import { MeetingCard } from "./components/MeetingCard";
 import { MeetingCardList } from "./components/MeetingCardList";
 import { ModalComponent } from "./components/Modal";
-import { ChakraProvider } from "@chakra-ui/react";
 import { LoadingTransaction } from "./components/Modal/components/LoadingTransaction";
 import { TimeList } from "./components/TimeList";
 import { MOCK_MEETINGS, MOCK_TIMES } from "./mock";
@@ -18,7 +17,6 @@ export default function App() {
     setShowModal(false);
   }
   return (
-    <ChakraProvider>
       <main
         style={{
           background: "#333333",
@@ -51,12 +49,10 @@ export default function App() {
           Test Modal!
         </button>
         <Input />
+          {/* Showing modal for testing purposes */}
+          <ModalComponent showModal={showModal} closeModal={handleCloseModal}>
+              <LoadingTransaction />
+          </ModalComponent>
       </main>
-
-      {/* Showing modal for testing purposes */}
-      <ModalComponent showModal={showModal} closeModal={handleCloseModal}>
-        <LoadingTransaction />
-      </ModalComponent>
-    </ChakraProvider>
   );
 }
