@@ -13,6 +13,7 @@ border: 1px solid #FF3864;
 box-sizing: border-box;
 border-radius: 6px;
 padding: 6px 8px;
+margin-bottom: 6px;
 `
 export const Attendee = styled.span`
 
