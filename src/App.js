@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import AvailableDaysButton from "./components/AvailableDays";
 import { Calendar } from "./components/Calendar";
 import { MeetingCard } from "./components/MeetingCard";
 import { MeetingCardList } from "./components/MeetingCardList";
@@ -9,7 +8,7 @@ import { LoadingTransaction } from "./components/Modal/components/LoadingTransac
 import { TimeList } from "./components/TimeList";
 import { MOCK_MEETINGS, MOCK_TIMES } from "./mock";
 import { Input } from "./components/Input";
-import AvailableDaysText from "./components/AvailableDays/AvailableDaysTextContainer";
+import AvailableDaysComponent from "./components/AvailableDays/AvailableDaysParentContainer";
 export default function App() {
   const [selectedTime, setselectedTime] = useState(null);
 
@@ -55,14 +54,7 @@ export default function App() {
           <ModalComponent showModal={showModal} closeModal={handleCloseModal}>
               <LoadingTransaction />
           </ModalComponent>
-          <AvailableDaysText></AvailableDaysText>
-          <AvailableDaysButton name="Monday"></AvailableDaysButton>
-          <AvailableDaysButton name="Tuesday"></AvailableDaysButton>
-          <AvailableDaysButton name="Wednesday"></AvailableDaysButton>
-          <AvailableDaysButton name="Thursday"></AvailableDaysButton>
-          <AvailableDaysButton name="Friday"></AvailableDaysButton>
-          <AvailableDaysButton name="Saturday"></AvailableDaysButton>
-          <AvailableDaysButton name="Sunday"></AvailableDaysButton>
+          <AvailableDaysComponent></AvailableDaysComponent>
       </main>
   );
 }
