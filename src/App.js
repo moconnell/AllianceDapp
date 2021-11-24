@@ -8,6 +8,8 @@ import { LoadingTransaction } from "./components/Modal/components/LoadingTransac
 import { TimeList } from "./components/TimeList";
 import { MOCK_MEETINGS, MOCK_TIMES } from "./mock";
 import { Input } from "./components/Input";
+import { Home } from "./containers/Home";
+import { Header } from "./components/Header";
 import AvailableDaysComponent from "./components/AvailableDays/AvailableDaysParentContainer";
 export default function App() {
   const [selectedTime, setselectedTime] = useState(null);
@@ -18,17 +20,17 @@ export default function App() {
     setShowModal(false);
   }
   return (
-      <main
-        style={{
-          background: "#333333",
-          width: "vw",
-          height: "100vh",
-          padding: "200px",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Calendar
+    <main
+      style={{
+        background: "#333333",
+        width: "vw",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      {/* <Calendar
           onChange={(date) => {
             console.log(date);
           }}
@@ -42,7 +44,6 @@ export default function App() {
           times={MOCK_TIMES}
           duration={60}
         />
-        {/* Button for modal logic */}
         <button
           style={{ width: "200px", height: "30px", background: "#fff" }}
           onClick={() => setShowModal(true)}
@@ -50,11 +51,11 @@ export default function App() {
           Test Modal!
         </button>
         <Input />
-          {/* Showing modal for testing purposes */}
           <ModalComponent showModal={showModal} closeModal={handleCloseModal}>
               <LoadingTransaction />
-          </ModalComponent>
-          <AvailableDaysComponent></AvailableDaysComponent>
-      </main>
+          </ModalComponent> */}
+      <Header />
+      <Home />
+    </main>
   );
 }
