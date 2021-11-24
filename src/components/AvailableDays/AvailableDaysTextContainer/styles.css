@@ -1,0 +1,11 @@
+.available-days-text {
+    bottom: 310px;
+    left: 10px;
+    position: absolute;
+    white-space: nowrap;
+    color: #FF3864;
+}
+
+.available-days-wrapper {
+    position: relative
+}

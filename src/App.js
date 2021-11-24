@@ -10,6 +10,7 @@ import { MOCK_MEETINGS, MOCK_TIMES } from "./mock";
 import { Input } from "./components/Input";
 import { Home } from "./containers/Home";
 import { Header } from "./components/Header";
+import AvailableDaysComponent from "./components/AvailableDays/AvailableDaysParentContainer";
 export default function App() {
   const [selectedTime, setselectedTime] = useState(null);
 
