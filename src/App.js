@@ -8,6 +8,7 @@ import { LoadingTransaction } from "./components/Modal/components/LoadingTransac
 import { TimeList } from "./components/TimeList";
 import { MOCK_MEETINGS, MOCK_TIMES } from "./mock";
 import { Input } from "./components/Input";
+import AvailableDaysComponent from "./components/AvailableDays/AvailableDaysParentContainer";
 export default function App() {
   const [selectedTime, setselectedTime] = useState(null);
 
@@ -53,6 +54,7 @@ export default function App() {
           <ModalComponent showModal={showModal} closeModal={handleCloseModal}>
               <LoadingTransaction />
           </ModalComponent>
+          <AvailableDaysComponent></AvailableDaysComponent>
       </main>
   );
 }
