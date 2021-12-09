@@ -9,7 +9,7 @@ export function Input(){
 
     return  (
         <Container maxW='container.xl' p={0} >
-            <Flex h={{ base: 'auto', md: '100vh' }} py={20} direction={{ base: 'column', md: 'row' }}>
+            <Flex h={{ base: 'auto', md: '100%' }} py={20} direction={{ base: 'column', md: 'row' }}>
                 <Profile />
                 <AvailabilityTime />
             </Flex>

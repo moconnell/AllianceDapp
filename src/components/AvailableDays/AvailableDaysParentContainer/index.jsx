@@ -4,7 +4,7 @@ import AvailableDaysButton from "../AvailableDaysCircleContainer";
 
 export default class AvailableDaysComponent extends React.Component {
     render() {
-        return (<>
+        return (<div style={{display:"flex",flexDirection:"row"}}>
             <AvailableDaysText></AvailableDaysText>
             <AvailableDaysButton name="Monday"></AvailableDaysButton>
             <AvailableDaysButton name="Tuesday"></AvailableDaysButton>
@@ -13,6 +13,6 @@ export default class AvailableDaysComponent extends React.Component {
             <AvailableDaysButton name="Friday"></AvailableDaysButton>
             <AvailableDaysButton name="Saturday"></AvailableDaysButton>
             <AvailableDaysButton name="Sunday"></AvailableDaysButton>
-        </>)
+        </div>)
     }
 }

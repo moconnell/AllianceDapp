@@ -11,6 +11,8 @@ import { Input } from "./components/Input";
 import { Home } from "./containers/Home";
 import { Header } from "./components/Header";
 import AvailableDaysComponent from "./components/AvailableDays/AvailableDaysParentContainer";
+import { Button } from "./components/Button";
+import { Profile } from "./components/Input/profile";
 export default function App() {
   const [selectedTime, setselectedTime] = useState(null);
 
@@ -21,21 +23,26 @@ export default function App() {
   }
   return (
     <main
-      style={{
-        background: "#333333",
-        width: "vw",
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-      }}
+    style={{
+      background: "#333333",
+      width: "vw",
+      height: "100vh",
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column",
+      overflowY:"scroll"
+    }}
     >
-      {/* <Calendar
+    <Header />
+
+    <Home />
+    <Input />
+      <Calendar
           onChange={(date) => {
             console.log(date);
           }}
         />
-        <MeetingCardList meetings={MOCK_MEETINGS} />
+        
         <TimeList
           selectedTime={selectedTime}
           onChange={(time) => {
@@ -44,18 +51,17 @@ export default function App() {
           times={MOCK_TIMES}
           duration={60}
         />
-        <button
-          style={{ width: "200px", height: "30px", background: "#fff" }}
+        <Button
           onClick={() => setShowModal(true)}
         >
           Test Modal!
-        </button>
-        <Input />
+        </Button>
           <ModalComponent showModal={showModal} closeModal={handleCloseModal}>
               <LoadingTransaction />
-          </ModalComponent> */}
-      <Header />
-      <Home />
+          </ModalComponent>
+          <MeetingCardList meetings={MOCK_MEETINGS} />
+          {/* <AvailableDaysComponent/> */}
+          
     </main>
   );
 }
