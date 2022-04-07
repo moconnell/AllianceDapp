@@ -3,16 +3,18 @@ import AvailableDaysText from "../AvailableDaysTextContainer";
 import AvailableDaysButton from "../AvailableDaysCircleContainer";
 
 export default class AvailableDaysComponent extends React.Component {
-    render() {
-        return (<div style={{display:"flex",flexDirection:"row"}}>
-            <AvailableDaysText></AvailableDaysText>
-            <AvailableDaysButton name="Monday"></AvailableDaysButton>
-            <AvailableDaysButton name="Tuesday"></AvailableDaysButton>
-            <AvailableDaysButton name="Wednesday"></AvailableDaysButton>
-            <AvailableDaysButton name="Thursday"></AvailableDaysButton>
-            <AvailableDaysButton name="Friday"></AvailableDaysButton>
-            <AvailableDaysButton name="Saturday"></AvailableDaysButton>
-            <AvailableDaysButton name="Sunday"></AvailableDaysButton>
-        </div>)
-    }
+  render() {
+    return (
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        <AvailableDaysText></AvailableDaysText>
+        <AvailableDaysButton name="Monday"></AvailableDaysButton>
+        <AvailableDaysButton name="Tuesday"></AvailableDaysButton>
+        <AvailableDaysButton name="Wednesday"></AvailableDaysButton>
+        <AvailableDaysButton name="Thursday"></AvailableDaysButton>
+        <AvailableDaysButton name="Friday"></AvailableDaysButton>
+        <AvailableDaysButton name="Saturday"></AvailableDaysButton>
+        <AvailableDaysButton name="Sunday"></AvailableDaysButton>
+      </div>
+    );
+  }
 }

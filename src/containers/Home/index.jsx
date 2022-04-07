@@ -49,7 +49,7 @@ export function Home() {
   }
 
   async function disconnect() {
-    await web3Modal.clearCachedProvider();
+    web3Modal.clearCachedProvider();
   }
 
   return (
