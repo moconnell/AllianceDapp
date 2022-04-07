@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'styl... Remove this comment to see the full error message
 import styled from "styled-components";
 
 export const TimeButton = styled.button`
@@ -6,7 +7,9 @@ export const TimeButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 10px 24px;
-  background: ${({ active }) => (active ? "#FF3864" : "transparent")};
+  background: ${({
+  active
+}: any) => (active ? "#FF3864" : "transparent")};
   border: 1px solid #ff3864;
   box-sizing: border-box;
   border-radius: 6px;
