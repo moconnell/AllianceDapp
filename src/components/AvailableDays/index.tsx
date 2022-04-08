@@ -1,21 +1,48 @@
-import "./styles.css";
+import { Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
+import DayOfWeek from "../../types/dayOfWeek";
+import AvailableDaysButton from "./AvailableDaysButton";
 
-const AvailableDaysButton: React.VFC<{ name: string }> = ({ name }) => {
-  const [active, setActive] = useState(false);
+const daysOfWeek = [
+  DayOfWeek.Monday,
+  DayOfWeek.Tuesday,
+  DayOfWeek.Wednesday,
+  DayOfWeek.Thursday,
+  DayOfWeek.Friday,
+  DayOfWeek.Saturday,
+  DayOfWeek.Sunday,
+];
+const noDaysAvailable = [false, false, false, false, false, false, false];
 
-  const handleClick = () => {
-    setActive(!active);
+interface AvailableDaysProps {
+  available?: boolean[];
+  onChange?: (available: boolean[]) => void;
+}
+
+const AvailableDays: React.VFC<AvailableDaysProps> = ({
+  available = noDaysAvailable,
+  onChange
+}) => {
+  const [availability, setAvailability] = useState(available);
+
+  const handleSelect = (dayOfWeek: DayOfWeek, selected: boolean) => {
+    const newAvailability = [...availability];
+    newAvailability[dayOfWeek] = selected;
+    setAvailability(newAvailability);
+    if (onChange) onChange(newAvailability);
   };
 
   return (
-    <div className="circle-wrapper" onClick={handleClick}>
-      <div className={active ? "name-wrapper-clicked" : "name-wrapper"}>
-        <span className={active ? "clicked-dot" : "dot"}></span>
-        {name}
-      </div>
-    </div>
+    <Flex direction={{ base: "row" }}>
+      {daysOfWeek.map((day) => (
+        <AvailableDaysButton
+          day={day}
+          selected={available[day]}
+          onSelect={handleSelect}
+        />
+      ))}
+    </Flex>
   );
 };
 
-export default AvailableDaysButton;
+export default AvailableDays;

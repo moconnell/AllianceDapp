@@ -7,7 +7,7 @@ const Input: React.VFC = () => {
     <Container maxW="container.xl" p={0}>
       <Flex
         h={{ base: "auto", md: "100%" }}
-        py={20}
+        py={10}
         direction={{ base: "column", md: "row" }}
       >
         <Profile />

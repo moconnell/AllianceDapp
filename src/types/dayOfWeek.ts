@@ -1,5 +1,5 @@
 enum DayOfWeek {
-  Sunday,
+  Sunday = 0,
   Monday,
   Tuesday,
   Wednesday,

@@ -6,11 +6,14 @@ import App from "./App";
 
 import theme from "./theme";
 import "./theme/styles.css";
+import { Web3ContextProvider } from "./context/Web3Context";
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <App />
+      <Web3ContextProvider>
+        <App />
+      </Web3ContextProvider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")

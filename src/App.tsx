@@ -10,7 +10,6 @@ import { MOCK_MEETINGS, MOCK_TIMES } from "./mock";
 import Input from "./components/Input";
 import Home from "./containers/Home";
 import { Header } from "./components/Header";
-import AvailableDaysComponent from "./components/AvailableDays/AvailableDaysParentContainer";
 import Button from "./components/Button";
 import Profile from "./components/Input/profile";
 import Time from "./types/time";
@@ -58,7 +57,6 @@ const App: React.VFC = () => {
         <LoadingTransaction />
       </ModalComponent>
       <MeetingCardList meetings={MOCK_MEETINGS} />
-      {/* <AvailableDaysComponent/> */}
     </main>
   );
 };

@@ -1,11 +1,10 @@
-import React from "react";
-import Button from "../Button";
+import Web3Button from "../Web3Button";
 import { Container } from "./styles";
 
 export function Header() {
   return (
     <Container>
-      <Button>Connect Wallet</Button>
+      <Web3Button />
     </Container>
   );
 }
