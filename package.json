@@ -1,9 +1,9 @@
 {
-  "name": "Alliance-dApp",
+  "name": "alliance-dapp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@chakra-ui/react": "^1.7.1",
+    "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.3.0",
     "@testing-library/jest-dom": "^5.16.4",
@@ -11,12 +11,13 @@
     "@testing-library/user-event": "^14.0.4",
     "@walletconnect/web3-provider": "^1.6.6",
     "ethers": "^5.4.7",
-    "framer-motion": "^6.2.9",
+    "framer-motion": "^4.1.17",
     "react": "^18.0.0",
     "react-calendar": "^3.5.0",
     "react-dom": "^18.0.0",
-    "react-scripts": "^5.0.0",
+    "react-scripts": "^4.0.3",
     "styled-components": "^5.3.3",
+    "typescript": "^4.4.4",
     "web-vitals": "^2.1.4",
     "web3modal": "^1.9.6"
   },
@@ -39,6 +40,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/react-calendar": "^3.5.0",
+    "@types/styled-components": "^5.1.25",
     "prettier": "^2.6.2",
     "ts-migrate": "^0.1.28"
   }
