@@ -1,4 +1,3 @@
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'styl... Remove this comment to see the full error message
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -13,9 +12,7 @@ export const Container = styled.div`
     opacity: 0.7;
   }
 
-  ${({
-  disabled
-}: any) =>
+  ${({ disabled }: any) =>
     disabled &&
     `
       cursor: auto;
