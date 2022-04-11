@@ -1,5 +1,5 @@
 import { shortenAddress } from "../../utils/shortenAddress";
-import Profile from "../../types/profile";
+import ProfileInfo from "../../types/profileInfo";
 import {
   AddressText,
   Container,
@@ -11,7 +11,7 @@ import {
 } from "./styles";
 
 interface ProfileProps {
-  profile: Profile;
+  profile: ProfileInfo;
 }
 
 const Profile: React.VFC<ProfileProps> = ({

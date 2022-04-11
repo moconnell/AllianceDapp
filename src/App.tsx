@@ -9,7 +9,7 @@ import TimeList from "./components/TimeList";
 import { MOCK_MEETINGS, MOCK_TIMES } from "./mock";
 import Input from "./components/Input";
 import Home from "./containers/Home";
-import { Header } from "./components/Header";
+import Header from "./components/Header";
 import Button from "./components/Button";
 import Profile from "./components/Input/profile";
 import Time from "./types/time";

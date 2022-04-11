@@ -30,7 +30,9 @@ const AvailabilityTime: React.VFC = () => {
           <FormControl>
             <FormLabel id="form-label">Time Zone</FormLabel>
             <Select placeholder="Select TZ" value={timeZone}>
-              { timeZones.map((tz) => (<option value={tz}>{tz.replaceAll("_", " ")}</option>))}
+              {timeZones.map((tz) => (
+                <option value={tz}>{tz.replaceAll("_", " ")}</option>
+              ))}
             </Select>
           </FormControl>
         </GridItem>

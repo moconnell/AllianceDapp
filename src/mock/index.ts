@@ -58,6 +58,7 @@ export const MOCK_MEETING = {
   description:
     "Meeting to discuss the next steps in the Raid Guild World Domination Schedule ",
 };
+
 export const MOCK_MEETINGS = [
   {
     attendee: "William Wallace",

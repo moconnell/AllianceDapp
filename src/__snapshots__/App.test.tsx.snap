@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render correctly 1`] = `
+<DocumentFragment>
+  <main
+    style="background: rgb(51, 51, 51); height: 100vh; display: flex; align-items: center; flex-direction: column; overflow-y: scroll;"
+  >
+    ((Header))((Home))((Input))((Calendar))((TimeList))((Button))((Modal))((MeetingCardList))
+  </main>
+</DocumentFragment>
+`;

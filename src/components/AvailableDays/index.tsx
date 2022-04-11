@@ -21,7 +21,7 @@ interface AvailableDaysProps {
 
 const AvailableDays: React.VFC<AvailableDaysProps> = ({
   available = noDaysAvailable,
-  onChange
+  onChange,
 }) => {
   const [availability, setAvailability] = useState(available);
 
@@ -37,6 +37,7 @@ const AvailableDays: React.VFC<AvailableDaysProps> = ({
       {daysOfWeek.map((day) => (
         <AvailableDaysButton
           day={day}
+          key={day}
           selected={available[day]}
           onSelect={handleSelect}
         />

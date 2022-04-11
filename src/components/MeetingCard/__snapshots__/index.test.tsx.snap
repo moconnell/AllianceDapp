@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MeetingCard /> should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ lhfvPN"
+  >
+    <span
+      class="sc-hKMtZM AizOZ"
+    >
+      undefined NaN/NaN/NaN NaN:0NaNAM-NaN:0NaNAM
+    </span>
+    <span
+      class="sc-gsnTZi bBjkky"
+    >
+      Dave Spart
+    </span>
+    <span
+      class="sc-dkzDqf ezVsXa"
+    >
+      Random meeting
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<MeetingCardList /> should render correctly 1`] = `
+<DocumentFragment>
+  ((MeetingCard))
+</DocumentFragment>
+`;

@@ -13,7 +13,7 @@ interface TimeListProps {
   times: Time[];
   selectedTime?: Time;
   duration?: number;
-  onChange: (time: Time) => void;
+  onChange?: (time: Time) => void;
 }
 
 const TimeList: React.VFC<TimeListProps> = ({

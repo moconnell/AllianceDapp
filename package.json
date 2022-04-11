@@ -8,10 +8,11 @@
     "@emotion/styled": "^11.3.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^14.0.4",
+    "@testing-library/user-event": "^14.1.0",
     "@walletconnect/web3-provider": "^1.6.6",
     "ethers": "^5.4.7",
     "framer-motion": "^4.1.17",
+    "jest-watch-typeahead": "^0.6.5",
     "react": "^18.0.0",
     "react-calendar": "^3.5.0",
     "react-dom": "^18.0.0",
@@ -25,6 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "coverage": "npm run test -- --coverage",
     "eject": "react-scripts eject",
     "pretty": "npx prettier --write \"./**/*.{js,jsx,json,ts,tsx}\""
   },
@@ -41,13 +43,20 @@
   ],
   "devDependencies": {
     "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.23",
     "@types/react-calendar": "^3.5.0",
     "@types/styled-components": "^5.1.25",
     "@types/testing-library__jest-dom": "^5.14.3",
     "@types/testing-library__react": "^10.2.0",
     "@types/testing-library__user-event": "^4.2.0",
+    "jest": "^27.5.1",
     "prettier": "^2.6.2",
     "ts-jest": "^27.1.4",
     "ts-migrate": "^0.1.28"
+  },
+  "jest": {
+    "testMatch": [
+      "**/*.test.[jt]s?(x)"
+    ]
   }
 }

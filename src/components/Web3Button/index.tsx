@@ -21,17 +21,23 @@ interface DisconnectProps {
 
 const DisconnectButton = ({ title, disconnect }: DisconnectProps) => {
   return disconnect ? (
-    <Button title={title} onClick={disconnect} >Disconnect Wallet</Button>
+    <Button title={title} onClick={disconnect}>
+      Disconnect Wallet
+    </Button>
   ) : (
     <Button>Loading...</Button>
   );
 };
 
 const Web3Button: React.VFC = () => {
-  const { address, network, web3Provider, connect, disconnect } = useWeb3Context();
+  const { address, network, web3Provider, connect, disconnect } =
+    useWeb3Context();
 
   return web3Provider ? (
-    <DisconnectButton disconnect={disconnect} title={`Disconnect ${network?.name} ${address}`} />
+    <DisconnectButton
+      disconnect={disconnect}
+      title={`Disconnect ${network?.name} ${address}`}
+    />
   ) : (
     <ConnectButton connect={connect} />
   );
