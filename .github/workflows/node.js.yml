@@ -18,5 +18,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: mv ./.env.github .env
     - run: npm ci
     - run: npm run coverage
