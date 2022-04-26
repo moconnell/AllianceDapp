@@ -4,18 +4,20 @@ import { Container, ButtonComponent } from "./styles";
 interface ButtonProps {
   title?: string;
   disabled?: boolean;
-  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  type?: "button" | "submit" | "reset";
+  onClick?: React.MouseEventHandler;
 }
 
 const Button: React.FC<ButtonProps> = ({
   children,
   disabled,
   title,
+  type = "button",
   onClick,
 }) => {
   return (
-    <Container aria-disabled={disabled} onClick={onClick}>
-      <ButtonComponent disabled={disabled} title={title}>
+    <Container aria-disabled={disabled}>
+      <ButtonComponent disabled={disabled} title={title} onClick={onClick} type={type}>
         {children}
       </ButtonComponent>
     </Container>

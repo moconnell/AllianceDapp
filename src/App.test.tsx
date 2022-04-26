@@ -13,6 +13,7 @@ jest.mock(
 );
 jest.mock("./components/TimeList", () => () => "((TimeList))");
 jest.mock("./containers/Home", () => () => "((Home))");
+jest.mock("./containers/Preferences", () => () => "((Preferences))");
 
 describe("<App />", () => {
   it("should render correctly", async () => {

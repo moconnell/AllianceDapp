@@ -1,44 +1,45 @@
 import { Flex } from "@chakra-ui/react";
-import React, { useState } from "react";
-import DayOfWeek from "../../types/dayOfWeek";
+import React, { useEffect, useState } from "react";
+import DaysOfWeek from "../../types/daysOfWeek";
 import AvailableDaysButton from "./AvailableDaysButton";
 
-const daysOfWeek = [
-  DayOfWeek.Monday,
-  DayOfWeek.Tuesday,
-  DayOfWeek.Wednesday,
-  DayOfWeek.Thursday,
-  DayOfWeek.Friday,
-  DayOfWeek.Saturday,
-  DayOfWeek.Sunday,
+const orderedDaysOfWeek = [
+  DaysOfWeek.Monday,
+  DaysOfWeek.Tuesday,
+  DaysOfWeek.Wednesday,
+  DaysOfWeek.Thursday,
+  DaysOfWeek.Friday,
+  DaysOfWeek.Saturday,
+  DaysOfWeek.Sunday,
 ];
-const noDaysAvailable = [false, false, false, false, false, false, false];
-
 interface AvailableDaysProps {
-  available?: boolean[];
-  onChange?: (available: boolean[]) => void;
+  value?: DaysOfWeek;
+  onChange?: (value: DaysOfWeek) => void;
 }
 
 const AvailableDays: React.VFC<AvailableDaysProps> = ({
-  available = noDaysAvailable,
+  value = DaysOfWeek.None,
   onChange,
 }) => {
-  const [availability, setAvailability] = useState(available);
+  const [availability, setAvailability] = useState(value);
 
-  const handleSelect = (dayOfWeek: DayOfWeek, selected: boolean) => {
-    const newAvailability = [...availability];
-    newAvailability[dayOfWeek] = selected;
+  useEffect(() => {
+    setAvailability(value);
+  }, [value]);
+
+  const handleSelect = (day: DaysOfWeek) => {
+    const newAvailability = availability ^ day;
     setAvailability(newAvailability);
     if (onChange) onChange(newAvailability);
   };
 
   return (
     <Flex direction={{ base: "row" }}>
-      {daysOfWeek.map((day) => (
+      {orderedDaysOfWeek.map((day) => (
         <AvailableDaysButton
           day={day}
           key={day}
-          selected={available[day]}
+          selected={(day & availability) === day}
           onSelect={handleSelect}
         />
       ))}

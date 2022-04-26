@@ -7,20 +7,23 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.3.0",
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.0.1",
-    "@testing-library/user-event": "^14.1.0",
+    "@testing-library/react": "^13.1.1",
+    "@testing-library/user-event": "^14.1.1",
     "@walletconnect/web3-provider": "^1.6.6",
-    "ethers": "^5.4.7",
+    "ethers": "^5.6.4",
     "framer-motion": "^4.1.17",
     "jest-watch-typeahead": "^0.6.5",
     "react": "^18.0.0",
     "react-calendar": "^3.5.0",
     "react-dom": "^18.0.0",
+    "react-error-boundary": "^3.1.4",
+    "react-hook-form": "^7.30.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "^4.0.3",
     "styled-components": "^5.3.3",
     "typescript": "^4.4.4",
     "web-vitals": "^2.1.4",
-    "web3modal": "^1.9.6"
+    "web3modal": "^1.9.7"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,17 +45,26 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@typechain/hardhat": "^6.0.0",
+    "@types/chai": "^4.3.1",
     "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.23",
+    "@types/node": "^17.0.25",
     "@types/react-calendar": "^3.5.0",
+    "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.25",
     "@types/testing-library__jest-dom": "^5.14.3",
     "@types/testing-library__react": "^10.2.0",
     "@types/testing-library__user-event": "^4.2.0",
+    "chai": "^4.3.6",
     "jest": "^27.5.1",
     "prettier": "^2.6.2",
+    "react-error-overlay": "^6.0.11",
     "ts-jest": "^27.1.4",
-    "ts-migrate": "^0.1.28"
+    "ts-migrate": "^0.1.28",
+    "ts-node": "^10.7.0",
+    "typechain": "^8.0.0"
   },
   "jest": {
     "testMatch": [

@@ -5,7 +5,7 @@ describe("<Profile />", () => {
   it("should render correctly", async () => {
     const profile = {
       picture: "profile.jpg",
-      address: "1 My Street, Somewhere",
+      email: "me@mydomain.com",
       username: "user1",
       description: "A user",
     };

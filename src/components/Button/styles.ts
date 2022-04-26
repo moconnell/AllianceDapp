@@ -6,22 +6,6 @@ export const Container = styled.div`
   justify-content: center;
   background: #ff3864;
   border-radius: 6px;
-  cursor: pointer;
-
-  :hover {
-    opacity: 0.7;
-  }
-
-  ${({ disabled }: any) =>
-    disabled &&
-    `
-      cursor: auto;
-      opacity: 0.7;
-
-      :hover{
-      opacity: 0.7;
-      }
-    `}
 `;
 
 export const ButtonComponent = styled.button`
@@ -31,5 +15,20 @@ export const ButtonComponent = styled.button`
   font-size: 14px;
   font-weight: 700;
   line-height: 20px;
-  cursor: inherit;
+  width: 100%;
+
+  :hover {
+    opacity: 0.7;
+  }
+
+  ${({ disabled }: any) =>
+    disabled &&
+    `
+      pointer-events: none;
+      opacity: 0.7;
+
+      :hover{
+      opacity: 0.7;
+      }
+    `}
 `;

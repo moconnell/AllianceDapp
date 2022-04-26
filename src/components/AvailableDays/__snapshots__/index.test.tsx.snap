@@ -9,10 +9,10 @@ exports[`<AvailableDays /> should render correctly 1`] = `
       class="circle-wrapper"
     >
       <div
-        class="name-wrapper"
+        class="name-wrapper-clicked"
       >
         <span
-          class="dot"
+          class="clicked-dot"
         />
         Mon
       </div>
@@ -21,10 +21,10 @@ exports[`<AvailableDays /> should render correctly 1`] = `
       class="circle-wrapper"
     >
       <div
-        class="name-wrapper"
+        class="name-wrapper-clicked"
       >
         <span
-          class="dot"
+          class="clicked-dot"
         />
         Tue
       </div>
@@ -33,10 +33,10 @@ exports[`<AvailableDays /> should render correctly 1`] = `
       class="circle-wrapper"
     >
       <div
-        class="name-wrapper"
+        class="name-wrapper-clicked"
       >
         <span
-          class="dot"
+          class="clicked-dot"
         />
         Wed
       </div>
@@ -45,10 +45,10 @@ exports[`<AvailableDays /> should render correctly 1`] = `
       class="circle-wrapper"
     >
       <div
-        class="name-wrapper"
+        class="name-wrapper-clicked"
       >
         <span
-          class="dot"
+          class="clicked-dot"
         />
         Thu
       </div>
@@ -57,10 +57,10 @@ exports[`<AvailableDays /> should render correctly 1`] = `
       class="circle-wrapper"
     >
       <div
-        class="name-wrapper"
+        class="name-wrapper-clicked"
       >
         <span
-          class="dot"
+          class="clicked-dot"
         />
         Fri
       </div>

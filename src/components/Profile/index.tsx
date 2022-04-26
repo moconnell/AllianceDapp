@@ -15,7 +15,7 @@ interface ProfileProps {
 }
 
 const Profile: React.VFC<ProfileProps> = ({
-  profile: { picture, address, username, description },
+  profile: { picture, email, username, description },
 }) => (
   <Container>
     <FlexContainer>
@@ -23,7 +23,7 @@ const Profile: React.VFC<ProfileProps> = ({
         <ProfilePic src={picture} />
       </FlexContainer>
       <TextContainer>
-        <AddressText>{shortenAddress(address)}</AddressText>
+        <AddressText>{shortenAddress(email)}</AddressText>
         <Username>{username}</Username>
       </TextContainer>
     </FlexContainer>

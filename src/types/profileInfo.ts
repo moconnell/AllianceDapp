@@ -1,8 +1,9 @@
 type ProfileInfo = {
-  picture: string;
-  address: string;
-  username: string;
-  description: string;
+  email?: string;
+  picture?: string;
+  url?: string;
+  username?: string;
+  description?: string;
 };
 
 export default ProfileInfo;

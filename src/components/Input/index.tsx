@@ -1,8 +1,14 @@
+import { useFormContext } from "react-hook-form";
 import { Container, Flex } from "@chakra-ui/react";
-import Profile from "./profile";
-import AvailabilityTime from "./availabilityTime";
+import ProfileInput from "./profileInput";
+import AvailabilityInput from "./availabilityInput";
+import Button from "../Button";
 
 const Input: React.VFC = () => {
+  const {
+    formState: { isDirty, isSubmitting, isValid },
+  } = useFormContext();
+
   return (
     <Container maxW="container.xl" p={0}>
       <Flex
@@ -10,9 +16,14 @@ const Input: React.VFC = () => {
         py={10}
         direction={{ base: "column", md: "row" }}
       >
-        <Profile />
-        <AvailabilityTime />
+        <ProfileInput />
+        <AvailabilityInput />
       </Flex>
+      <Container pr={10} maxW="xs">
+        <Button disabled={!isDirty || !isValid || isSubmitting} type="submit">
+          Save
+        </Button>
+      </Container>
     </Container>
   );
 };

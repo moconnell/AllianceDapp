@@ -39,9 +39,9 @@ const TimeList: React.VFC<TimeListProps> = ({
           active={
             hours === selectedTime?.hours && minutes === selectedTime?.minutes
           }
-          onClick={(e: any) => {
+          onClick={(e) => {
             e.preventDefault();
-            onChange({ hours, minutes });
+            if (onChange) onChange({ hours, minutes });
           }}
           key={index + "key"}
           hours={hours}

@@ -15,7 +15,7 @@ const providerOptions = {
   walletconnect: {
     package: WalletConnectProvider,
     options: {
-      infuraId: process.env.WEB3_INFURA_ID,
+      infuraId: process.env.REACT_APP_WEB3_INFURA_ID,
     },
   },
 };
@@ -23,8 +23,8 @@ const providerOptions = {
 let web3Modal: Web3Modal | null;
 if (typeof window !== "undefined") {
   web3Modal = new Web3Modal({
-    network: process.env.WEB3_NETWORK,
-    cacheProvider: process.env.WEB3_CACHE_PROVIDER === "true",
+    network: process.env.REACT_APP_WEB3_NETWORK,
+    cacheProvider: process.env.REACT_APP_WEB3_CACHE_PROVIDER,
     providerOptions,
   });
 }

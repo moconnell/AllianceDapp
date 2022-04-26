@@ -1,11 +1,11 @@
 import "./styles.css";
-import React, { useState } from "react";
-import DayOfWeek from "../../../types/dayOfWeek";
+import React, { useEffect, useState } from "react";
+import DaysOfWeek from "../../../types/daysOfWeek";
 
 interface AvailableDaysButtonProps {
-  day: DayOfWeek;
+  day: DaysOfWeek;
   selected?: boolean;
-  onSelect?: (day: DayOfWeek, selected: boolean) => void;
+  onSelect?: (day: DaysOfWeek, selected: boolean) => void;
 }
 
 const AvailableDaysButton: React.VFC<AvailableDaysButtonProps> = ({
@@ -14,6 +14,10 @@ const AvailableDaysButton: React.VFC<AvailableDaysButtonProps> = ({
   onSelect: selectedChanged,
 }) => {
   const [active, setActive] = useState(selected);
+
+  useEffect(() => {
+    setActive(selected);
+  }, [selected]);
 
   const handleClick = () => {
     const newActive = !active;
@@ -25,7 +29,7 @@ const AvailableDaysButton: React.VFC<AvailableDaysButtonProps> = ({
     <div className="circle-wrapper" onClick={handleClick}>
       <div className={active ? "name-wrapper-clicked" : "name-wrapper"}>
         <span className={active ? "clicked-dot" : "dot"}></span>
-        {DayOfWeek[day].substring(0, 3)}
+        {DaysOfWeek[day].substring(0, 3)}
       </div>
     </div>
   );
