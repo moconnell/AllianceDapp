@@ -23,9 +23,3 @@ exports[`<MeetingCard /> should render correctly 1`] = `
   </div>
 </DocumentFragment>
 `;
-
-exports[`<MeetingCardList /> should render correctly 1`] = `
-<DocumentFragment>
-  ((MeetingCard))
-</DocumentFragment>
-`;
