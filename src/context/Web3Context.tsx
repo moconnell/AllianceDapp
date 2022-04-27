@@ -4,7 +4,11 @@ import { Web3ProviderState, web3InitialState } from "../reducers";
 
 const Web3Context = createContext<Web3ProviderState>(web3InitialState);
 
-const Web3ContextProvider: React.FC = ({ children }) => {
+interface Web3ContextProviderProps {
+  children: React.ReactNode;
+}
+
+const Web3ContextProvider = ({ children }: Web3ContextProviderProps) => {
   const web3ProviderState = useWeb3();
 
   return (
