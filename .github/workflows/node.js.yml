@@ -2,9 +2,6 @@ name: alliance-dapp CI
 
 on: [push, pull_request]
 
-env:
-  LANG: "de_CH.UTF-8"
-
 jobs:
   build:
 
@@ -15,10 +12,6 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - name: Set locale
-      run: |
-          sudo locale-gen ${LANG}
-          sudo update-locale LANG=${LANG} LC_MESSAGES=POSIX
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3

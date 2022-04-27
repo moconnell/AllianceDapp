@@ -2,8 +2,8 @@ import { useFormContext } from "react-hook-form";
 import { renderWithFormProvider } from "../../testUtils";
 import Input from "./index";
 
-jest.mock("./AvailabilityInput", () => () => "((AvailabilityInput))");
-jest.mock("./ProfileInput", () => () => "((ProfileInput))");
+jest.mock("./availabilityInput", () => () => "((AvailabilityInput))");
+jest.mock("./profileInput", () => () => "((ProfileInput))");
 jest.mock("react-hook-form", () => ({
   ...jest.requireActual("react-hook-form"),
   useFormContext: jest.fn(),

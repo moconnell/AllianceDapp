@@ -18,7 +18,7 @@ describe("<TimePicker />", () => {
     );
 
     const select = getByRole("combobox");
-    await selectEvent.select(select, "12:30");
+    await selectEvent.select(select, "12:30 PM");
 
     // failing hmm..
     // expect(getByTestId("form")).toHaveFormValues({

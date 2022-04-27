@@ -1,6 +1,6 @@
 import Time from "../types/time";
 
-const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+const locale = process.env.REACT_LOCALE ?? Intl.DateTimeFormat().resolvedOptions().locale;
 const dateTimeFormat = Intl.DateTimeFormat(locale, {
   dateStyle: "full",
   timeStyle: "short",
