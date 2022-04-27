@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Set locale
-      run: sudo update-locale LANG=de_CH.UTF-8 LC_MESSAGES=POSIX
+      run: sudo update-locale LANG=de_DE.UTF-8 LC_MESSAGES=POSIX
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
