@@ -70,7 +70,8 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/mock/**",
-      "!src/typechain-types/**"
+      "!src/typechain-types/**",
+      "!src/types/**"
     ],
     "coverageThreshold": {
       "global": {
