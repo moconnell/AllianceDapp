@@ -29,7 +29,7 @@ const DisconnectButton = ({ title, disconnect }: DisconnectProps) => {
   );
 };
 
-const Web3Button: React.VFC = () => {
+const Web3Button = () => {
   const { address, network, web3Provider, connect, disconnect } =
     useWeb3Context();
 

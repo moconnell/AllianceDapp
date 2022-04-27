@@ -9,7 +9,7 @@ import Preferences from "./containers/Preferences";
 import Meetings from "./containers/Meetings";
 import ErrorFallback from "./ErrorFallback";
 
-const App: React.VFC = () => {
+const App = () => {
   return (
     <main
       style={{

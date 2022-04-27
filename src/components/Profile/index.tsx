@@ -14,9 +14,9 @@ interface ProfileProps {
   profile: ProfileInfo;
 }
 
-const Profile: React.VFC<ProfileProps> = ({
+const Profile = ({
   profile: { picture, email, username, description },
-}) => (
+}: ProfileProps) => (
   <Container>
     <FlexContainer>
       <FlexContainer>

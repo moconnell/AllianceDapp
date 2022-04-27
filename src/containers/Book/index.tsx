@@ -7,7 +7,7 @@ import TimeList from "../../components/TimeList";
 import { MOCK_TIMES } from "../../mock";
 import Time from "../../types/time";
 
-const Book: React.VFC = () => {
+const Book = () => {
   const [selectedTime, setselectedTime] = useState<Time | undefined>(undefined);
 
   const [showModal, setShowModal] = useState(false);

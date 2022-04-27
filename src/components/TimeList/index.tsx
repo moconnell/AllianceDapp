@@ -16,12 +16,12 @@ interface TimeListProps {
   onChange?: (time: Time) => void;
 }
 
-const TimeList: React.VFC<TimeListProps> = ({
+const TimeList = ({
   times,
   onChange,
   selectedTime,
   duration,
-}) => (
+}: TimeListProps) => (
   <Container>
     <StyledTitle>Select a time </StyledTitle>
 

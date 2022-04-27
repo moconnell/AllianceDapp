@@ -9,7 +9,7 @@ import ProfileInfo from "../../types/profileInfo";
 import AvailabilityInfo from "../../types/availabilityInfo";
 import { useEffect, useMemo } from "react";
 
-const Preferences: React.VFC = () => {
+const Preferences = () => {
   const { availability, profile, setProfileAvailability } = useCalendar();
   const { address } = useWeb3Context();
 

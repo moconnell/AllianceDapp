@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Calendar from "../../components/Calendar";
 import { Container, Flex } from "@chakra-ui/react";
 
-const Meetings: React.VFC = () => {
+const Meetings = () => {
   const { calendar, getMeetings } = useCalendar();
   const [meetings, setMeetings] = useState([] as Meeting[]);
   const [date, setDate] = useState(new Date());

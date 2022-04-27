@@ -16,10 +16,10 @@ interface ErrorFallbackProps {
   resetErrorBoundary: () => void;
 }
 
-const ErrorFallback: React.VFC<ErrorFallbackProps> = ({
+const ErrorFallback = ({
   error,
   resetErrorBoundary,
-}) => (
+}: ErrorFallbackProps) => (
   <Container>
     <p>Something went wrong:</p>
     <pre>{error.message}</pre>

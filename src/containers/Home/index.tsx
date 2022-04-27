@@ -14,7 +14,7 @@ import { Navigate } from "react-router-dom";
 import Web3Button from "../../components/Web3Button";
 import { useWeb3Context } from "../../context/Web3Context";
 
-const Home: React.VFC = () => {
+const Home = () => {
   const { calendar } = useCalendar();
   const { address } = useWeb3Context();
   

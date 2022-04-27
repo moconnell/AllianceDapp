@@ -8,12 +8,12 @@ interface TimeItemProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const TimeItem: React.VFC<TimeItemProps> = ({
+const TimeItem = ({
   hours,
   minutes,
   active,
   onClick,
-}) => (
+}: TimeItemProps) => (
   <TimeButton
     onClick={onClick}
     style={{ backgroundColor: active ? "#ff3864" : "transparent" }}

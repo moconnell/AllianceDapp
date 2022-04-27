@@ -1,4 +1,3 @@
-import React from "react";
 import { Spinner, Progress } from "@chakra-ui/react";
 import {
   Container,
@@ -15,10 +14,10 @@ interface LoadingTransactionProps {
   progress?: number;
 }
 
-const LoadingTransaction: React.VFC<LoadingTransactionProps> = ({
+const LoadingTransaction = ({
   loading = true,
   progress,
-}) => (
+}: LoadingTransactionProps) => (
   <Container>
     <MainContent>
       <TextAndIconContainer>
