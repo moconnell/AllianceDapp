@@ -1,5 +1,5 @@
 import { Select } from "@chakra-ui/react";
-import { useState } from "react";
+import { useMemo } from "react";
 import Time from "../../types/time";
 import { range } from "../../utils/range";
 import { fromTotalMins, totalMinutes } from "../../utils/timeUtils";
@@ -32,13 +32,26 @@ const TimePicker = ({
   timeIntervalMins = 30,
   onChange,
 }: TimePickerProps) => {
-  const [times] = useState(
-    range(0, 23).flatMap((hours) =>
+  const options = useMemo(() => {
+    const times = range(0, 23).flatMap((hours) =>
       range(0, 60 / timeIntervalMins - 1).map((i) => {
         return { hours, minutes: i * timeIntervalMins };
       })
-    )
-  );
+    );
+
+    return times.map((t) => {
+      const mins = totalMinutes(t);
+      return (
+        <option
+          key={`${prefix}${mins}`}
+          value={mins}
+          disabled={disabledPredicate(mins)}
+        >
+          {formatTime(t)}
+        </option>
+      );
+    });
+  }, [disabledPredicate, prefix, timeIntervalMins]);
 
   return (
     <Select
@@ -48,18 +61,7 @@ const TimePicker = ({
         if (onChange) onChange(fromTotalMins(Number(e.target.value)));
       }}
     >
-      {times.map((t) => {
-        const mins = totalMinutes(t);
-        return (
-          <option
-            key={`${prefix}${mins}`}
-            value={mins}
-            disabled={disabledPredicate(mins)}
-          >
-            {formatTime(t)}
-          </option>
-        );
-      })}
+      {options}
     </Select>
   );
 };
