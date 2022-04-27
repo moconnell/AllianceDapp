@@ -4,7 +4,7 @@ import ProfileInput from "./profileInput";
 import AvailabilityInput from "./availabilityInput";
 import Button from "../Button";
 
-const Input: React.VFC = () => {
+const Input = () => {
   const {
     formState: { isDirty, isSubmitting, isValid },
   } = useFormContext();

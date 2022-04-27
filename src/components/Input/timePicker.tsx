@@ -24,14 +24,14 @@ interface TimePickerProps {
   onChange?: (value: Time) => void;
 }
 
-const TimePicker: React.VFC<TimePickerProps> = ({
+const TimePicker = ({
   name,
   value,
   disabledPredicate = () => false,
   prefix = name.substring(0, 1),
   timeIntervalMins = 30,
   onChange,
-}) => {
+}: TimePickerProps) => {
   const [times] = useState(
     range(0, 23).flatMap((hours) =>
       range(0, 60 / timeIntervalMins - 1).map((i) => {

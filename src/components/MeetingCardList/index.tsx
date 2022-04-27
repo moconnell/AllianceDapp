@@ -6,7 +6,7 @@ interface MeetingCardListProps {
   meetings: Meeting[];
 }
 
-const MeetingCardList: React.VFC<MeetingCardListProps> = ({ meetings }) => {
+const MeetingCardList = ({ meetings }: MeetingCardListProps) => {
   return (
     <MeetingCardContainer>
       {meetings.map((meeting, index) => (

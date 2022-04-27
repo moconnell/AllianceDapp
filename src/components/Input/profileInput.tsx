@@ -9,14 +9,8 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { useFormContext } from "react-hook-form";
-import ProfileInfo from "../../types/profileInfo";
 
-interface ProfileInputProps {
-  profile?: ProfileInfo;
-  onChange?: (profileInfo: ProfileInfo) => void;
-}
-
-const ProfileInput: React.VFC<ProfileInputProps> = ({ profile }) => {
+const ProfileInput = () => {
   const {
     register,
     formState: { errors },

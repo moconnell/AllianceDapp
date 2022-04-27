@@ -12,18 +12,19 @@ import {
 } from "@chakra-ui/react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import DaysOfWeek from "../../types/daysOfWeek";
+import Time from "../../types/time";
 import { totalMinutes } from "../../utils/timeUtils";
 import AvailableDays from "../AvailableDays";
 import "./styles.css";
 import TimePicker from "./timePicker";
 import { timeZones } from "./timeZones";
 
-const AvailabilityInput: React.VFC = () => {
+const AvailabilityInput = () => {
   const { control, register } = useFormContext();
 
   const colSpan = useBreakpointValue({ base: 2, md: 1 });
 
-  const from = useWatch({ control, name: "from" });
+  const from = useWatch({ control, name: "from" }) as Time;
   const to = useWatch({ control, name: "to" });
 
   return (

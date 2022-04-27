@@ -12,9 +12,9 @@ interface MeetingCardProps {
   meeting: Meeting;
 }
 
-const MeetingCard: React.VFC<MeetingCardProps> = ({
+const MeetingCard = ({
   meeting: { date, endDate, attendee, description },
-}) => (
+}: MeetingCardProps) => (
   <CardContainer>
     <DateText>{`${DayOfWeek[date.getDay()]} ${date.getDate()}/${
       date.getMonth() + 1
