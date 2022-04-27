@@ -1,24 +1,19 @@
-import { getMeridian } from "../../../../utils/formatDate";
+import Time from "../../../../types/time";
+import { formatTime } from "../../../../utils/formatDate";
 import { TimeButton } from "./styles";
 
 interface TimeItemProps {
-  hours: number;
-  minutes: number;
+  value: Time;
   active: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const TimeItem = ({
-  hours,
-  minutes,
-  active,
-  onClick,
-}: TimeItemProps) => (
+const TimeItem = ({ value, active, onClick }: TimeItemProps) => (
   <TimeButton
     onClick={onClick}
     style={{ backgroundColor: active ? "#ff3864" : "transparent" }}
   >
-    {getMeridian(hours, minutes)}
+    {formatTime(value)}
   </TimeButton>
 );
 

@@ -1,19 +1,9 @@
 import { Select } from "@chakra-ui/react";
 import { useMemo } from "react";
 import Time from "../../types/time";
+import { formatTime } from "../../utils/formatDate";
 import { range } from "../../utils/range";
 import { fromTotalMins, totalMinutes } from "../../utils/timeUtils";
-
-const format = Intl.DateTimeFormat(
-  Intl.DateTimeFormat().resolvedOptions().locale,
-  { timeStyle: "short" }
-);
-
-const formatTime = (t: Time) => {
-  let d = new Date();
-  d.setHours(t.hours, t.minutes);
-  return format.format(d);
-};
 
 interface TimePickerProps {
   name: string;

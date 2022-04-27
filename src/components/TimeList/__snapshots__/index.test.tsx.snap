@@ -28,61 +28,61 @@ exports[`<TimeList /> should render correctly 1`] = `
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        10:00AM
+        10:00
       </button>
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        10:30AM
+        10:30
       </button>
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        11:00AM
+        11:00
       </button>
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        11:30AM
+        11:30
       </button>
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        12:00PM
+        12:00
       </button>
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        1:00PM
+        13:00
       </button>
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        1:30PM
+        13:30
       </button>
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        2:00PM
+        14:00
       </button>
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        2:30PM
+        14:30
       </button>
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
       >
-        3:00PM
+        15:00
       </button>
     </div>
   </div>

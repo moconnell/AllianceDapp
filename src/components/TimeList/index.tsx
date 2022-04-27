@@ -34,18 +34,17 @@ const TimeList = ({
     </InlineContainer>
 
     <TimeContainer>
-      {times.map(({ hours, minutes }: any, index: any) => (
+      {times.map((value: Time, index: any) => (
         <TimeItem
           active={
-            hours === selectedTime?.hours && minutes === selectedTime?.minutes
+            value === selectedTime
           }
           onClick={(e) => {
             e.preventDefault();
-            if (onChange) onChange({ hours, minutes });
+            if (onChange) onChange(value);
           }}
           key={index + "key"}
-          hours={hours}
-          minutes={minutes}
+          value={value}
         />
       ))}
     </TimeContainer>
