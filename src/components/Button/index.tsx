@@ -5,6 +5,7 @@ interface ButtonProps {
   children?: React.ReactNode;
   title?: string;
   disabled?: boolean;
+  testId?: string;
   type?: "button" | "submit" | "reset";
   onClick?: React.MouseEventHandler;
 }
@@ -12,13 +13,14 @@ interface ButtonProps {
 const Button = ({
   children,
   disabled,
-  title,
+  title,  
+  testId = "button",
   type = "button",
   onClick,
 }: ButtonProps) => {
   return (
     <Container aria-disabled={disabled}>
-      <ButtonComponent disabled={disabled} title={title} onClick={onClick} type={type}>
+      <ButtonComponent data-testid={testId} disabled={disabled} title={title} onClick={onClick} type={type}>
         {children}
       </ButtonComponent>
     </Container>

@@ -10,7 +10,7 @@ const TestComponent = () => {
   return (
     <>
       <AvailableDays value={value} />
-      <Button onClick={() => setValue(DaysOfWeek.Monday)} />
+      <Button testId="button:update" onClick={() => setValue(DaysOfWeek.Monday)} />
     </>
   );
 };
@@ -50,11 +50,13 @@ describe("<AvailableDays />", () => {
   );
 
   it("should re-render after update", async () => {
-    const { asFragment, getByRole, getByText } = render(<TestComponent />);
+    const { asFragment, getByTestId, getByText } = render(<TestComponent />);
     expect(asFragment()).toMatchSnapshot();
+    
     fireEvent.click(getByText("Fri"));
     expect(asFragment()).toMatchSnapshot();
-    fireEvent.click(getByRole("button"));
+
+    fireEvent.click(getByTestId("button:update"));
     expect(asFragment()).toMatchSnapshot();
   });
 });

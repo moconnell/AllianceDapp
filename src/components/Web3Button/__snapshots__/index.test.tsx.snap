@@ -7,6 +7,7 @@ exports[`<Web3Button /> should render correctly 1`] = `
   >
     <button
       class="sc-gsnTZi kKvmkM"
+      data-testid="button"
       type="button"
     >
       Loading...

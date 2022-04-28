@@ -19,6 +19,7 @@ exports[`<Input /> should render correctly 1`] = `
       >
         <button
           class="sc-gsnTZi cUAtCC"
+          data-testid="button"
           disabled=""
           type="submit"
         >
