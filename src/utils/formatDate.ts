@@ -1,11 +1,16 @@
 import Time from "../types/time";
 
-const locale = process.env.REACT_LOCALE ?? Intl.DateTimeFormat().resolvedOptions().locale;
+const locale =
+  process.env.REACT_LOCALE ?? Intl.DateTimeFormat().resolvedOptions().locale;
+
 const dateTimeFormat = Intl.DateTimeFormat(locale, {
   dateStyle: "full",
   timeStyle: "short",
 });
-const shortTimeFormat = Intl.DateTimeFormat(locale, { timeStyle: "short" });
+
+const shortTimeFormat = Intl.DateTimeFormat(locale, {
+  timeStyle: "short",
+});
 
 function isTime(value: Time | Date): value is Time {
   return (value as Time).hours !== undefined;
@@ -22,11 +27,5 @@ export const formatTime = (value: Time | Date) => {
 };
 
 export const formatDateTime = (value: Date) => {
-  try {
-    return dateTimeFormat.format(value);
-  } catch (error: any) {
-    if (error instanceof Error)
-      throw Error(`Could not format '${value}': ${error}`);
-    else throw Error(`Could not format '${value}'`);
-  }
+  return dateTimeFormat.format(value);
 };
