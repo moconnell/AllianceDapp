@@ -2,7 +2,7 @@ import React from "react";
 import { Container, ButtonComponent } from "./styles";
 
 interface ButtonProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title?: string;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";

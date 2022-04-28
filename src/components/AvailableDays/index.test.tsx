@@ -1,10 +1,23 @@
 import { fireEvent, render } from "@testing-library/react";
+import { useState } from "react";
 import DaysOfWeek from "../../types/daysOfWeek";
+import Button from "../Button";
 import AvailableDays from "./index";
+
+const TestComponent = () => {
+  const [value, setValue] = useState(DaysOfWeek.MonFri);
+
+  return (
+    <>
+      <AvailableDays value={value} />
+      <Button onClick={() => setValue(DaysOfWeek.Monday)} />
+    </>
+  );
+};
 
 describe("<AvailableDays />", () => {
   it("should render correctly", async () => {
-    const { asFragment } = render(<AvailableDays value={DaysOfWeek.MonFri} />);
+    const { asFragment } = render(<AvailableDays />);
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -35,4 +48,13 @@ describe("<AvailableDays />", () => {
       expect(mockHandleChange).toHaveBeenCalledWith(expectedValue);
     })
   );
+
+  it("should re-render after update", async () => {
+    const { asFragment, getByRole, getByText } = render(<TestComponent />);
+    expect(asFragment()).toMatchSnapshot();
+    fireEvent.click(getByText("Fri"));
+    expect(asFragment()).toMatchSnapshot();
+    fireEvent.click(getByRole("button"));
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

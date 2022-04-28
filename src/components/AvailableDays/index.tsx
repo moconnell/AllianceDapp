@@ -17,10 +17,10 @@ interface AvailableDaysProps {
   onChange?: (value: DaysOfWeek) => void;
 }
 
-const AvailableDays: React.VFC<AvailableDaysProps> = ({
+const AvailableDays = ({
   value = DaysOfWeek.None,
   onChange,
-}) => {
+}: AvailableDaysProps) => {
   const [availability, setAvailability] = useState(value);
 
   useEffect(() => {
