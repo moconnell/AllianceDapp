@@ -8,7 +8,7 @@ exports[`<MeetingCard /> should render correctly 1`] = `
     <span
       class="sc-hKMtZM AizOZ"
     >
-      Wednesday, February 2, 2022 at 9:00 PM-9:30 PM
+      Wednesday, February 2, 2022 at 8:00 PM-8:30 PM
     </span>
     <span
       class="sc-gsnTZi bBjkky"
