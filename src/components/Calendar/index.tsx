@@ -10,7 +10,7 @@ interface CalendarProps {
   defaultValue?: Date | Date[];
 }
 
-const Calendar: React.VFC<CalendarProps> = ({ onChange, defaultValue }) => (
+const Calendar = ({ onChange, defaultValue }: CalendarProps) => (
   <ReactCalendar
     onDrillDown={({ activeStartDate, view }) =>
       console.log("Drilled down to: ", activeStartDate, view)
