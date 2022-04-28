@@ -68,6 +68,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
+      "!src/react-app-env.d.ts",
       "!src/mock/**",
       "!src/testUtils/**",
       "!src/typechain-types/**",
