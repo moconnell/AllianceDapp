@@ -23,7 +23,7 @@ const TimeList = ({
   duration,
 }: TimeListProps) => (
   <Container>
-    <StyledTitle>Select a time </StyledTitle>
+    <StyledTitle>Select a time</StyledTitle>
 
     <InlineContainer>
       <InlineContainer>
@@ -34,7 +34,7 @@ const TimeList = ({
     </InlineContainer>
 
     <TimeContainer>
-      {times.map((value: Time, index: any) => (
+      {times.map((value, index) => (
         <TimeItem
           active={
             value === selectedTime

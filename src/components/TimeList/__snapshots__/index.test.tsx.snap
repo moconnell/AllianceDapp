@@ -8,7 +8,7 @@ exports[`<TimeList /> should render correctly 1`] = `
     <span
       class="sc-eCYdqJ jXlBzm"
     >
-      Select a time 
+      Select a time
     </span>
     <div
       class="sc-jSMfEi gWnnJL"
@@ -27,6 +27,189 @@ exports[`<TimeList /> should render correctly 1`] = `
       <button
         class="sc-bczRLJ gfvuLZ"
         style="background-color: transparent;"
+      >
+        10:00 AM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        10:30 AM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        11:00 AM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        11:30 AM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        12:00 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        1:00 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        1:30 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        2:00 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        2:30 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        3:00 PM
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<TimeList /> should render correctly 2`] = `
+<DocumentFragment>
+  <div
+    class="sc-hKMtZM itofvw"
+  >
+    <span
+      class="sc-eCYdqJ jXlBzm"
+    >
+      Select a time
+    </span>
+    <div
+      class="sc-jSMfEi gWnnJL"
+    >
+      <div
+        class="sc-jSMfEi gWnnJL"
+      >
+        <svg>
+          clock.svg
+        </svg>
+      </div>
+    </div>
+    <div
+      class="sc-gsnTZi ecdcmO"
+    >
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: rgb(255, 56, 100);"
+      >
+        10:00 AM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        10:30 AM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        11:00 AM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        11:30 AM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        12:00 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        1:00 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        1:30 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        2:00 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        2:30 PM
+      </button>
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: transparent;"
+      >
+        3:00 PM
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<TimeList /> should render correctly 3`] = `
+<DocumentFragment>
+  <div
+    class="sc-hKMtZM itofvw"
+  >
+    <span
+      class="sc-eCYdqJ jXlBzm"
+    >
+      Select a time
+    </span>
+    <div
+      class="sc-jSMfEi gWnnJL"
+    >
+      <div
+        class="sc-jSMfEi gWnnJL"
+      >
+        <svg>
+          clock.svg
+        </svg>
+      </div>
+      <span
+        class="sc-dkzDqf dCXbfI"
+      >
+        30 min
+      </span>
+    </div>
+    <div
+      class="sc-gsnTZi ecdcmO"
+    >
+      <button
+        class="sc-bczRLJ gfvuLZ"
+        style="background-color: rgb(255, 56, 100);"
       >
         10:00 AM
       </button>
