@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, ModalOverlay, ModalContent } from "@chakra-ui/react";
 
 interface ModalComponentProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   showModal?: boolean;
   closeModal(): void;
   maxWidth?: string | number;
