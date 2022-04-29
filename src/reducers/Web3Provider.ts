@@ -67,7 +67,5 @@ export function web3Reducer(
       };
     case "RESET_WEB3_PROVIDER":
       return web3InitialState;
-    default:
-      throw new Error();
   }
 }
