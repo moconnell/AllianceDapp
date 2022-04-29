@@ -1,21 +1,20 @@
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-
 import { useEffect, useReducer, useCallback } from "react";
 import { ethers } from "ethers";
+import { Web3ProviderState, web3InitialState, web3Reducer } from "../reducers";
 
-import {
-  Web3ProviderState,
-  Web3Action,
-  web3InitialState,
-  web3Reducer,
-} from "../reducers";
+const {
+  REACT_APP_WEB3_CACHE_PROVIDER,
+  REACT_APP_WEB3_INFURA_ID,
+  REACT_APP_WEB3_NETWORK,
+} = process.env;
 
 const providerOptions = {
   walletconnect: {
     package: WalletConnectProvider,
     options: {
-      infuraId: process.env.REACT_APP_WEB3_INFURA_ID,
+      infuraId: REACT_APP_WEB3_INFURA_ID,
     },
   },
 };
@@ -23,8 +22,8 @@ const providerOptions = {
 let web3Modal: Web3Modal | null;
 if (typeof window !== "undefined") {
   web3Modal = new Web3Modal({
-    network: process.env.REACT_APP_WEB3_NETWORK,
-    cacheProvider: process.env.REACT_APP_WEB3_CACHE_PROVIDER,
+    network: REACT_APP_WEB3_NETWORK,
+    cacheProvider: REACT_APP_WEB3_CACHE_PROVIDER,
     providerOptions,
   });
 }
@@ -53,7 +52,8 @@ export const useWeb3 = () => {
           web3Provider,
           address,
           network,
-        } as Web3Action);
+          signer
+        });
       } catch (e) {
         console.log("connect error", e);
       }
@@ -70,7 +70,7 @@ export const useWeb3 = () => {
       }
       dispatch({
         type: "RESET_WEB3_PROVIDER",
-      } as Web3Action);
+      });
     } else {
       console.error("No Web3Modal");
     }
@@ -90,7 +90,7 @@ export const useWeb3 = () => {
         dispatch({
           type: "SET_ADDRESS",
           address: accounts[0],
-        } as Web3Action);
+        });
       };
 
       // https://docs.ethers.io/v5/concepts/best-practices/#best-practices--network-changes
@@ -129,6 +129,7 @@ export const useWeb3 = () => {
     web3Provider,
     address,
     network,
+    signer,
     connect,
     disconnect,
   } as Web3Client;

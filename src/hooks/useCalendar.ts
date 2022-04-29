@@ -24,7 +24,7 @@ const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 const toString = (value: any) => (value ? String(value) : "");
 
 export const useCalendar = () => {
-  const { address, web3Provider } = useWeb3Context();
+  const { address, signer, web3Provider } = useWeb3Context();
   const [calendarFactory, setCalendarFactory] = useState<CalendarFactory>();
   const [calendar, setCalendar] = useState<Calendar>();
   const [availability, setAvailability] = useState<AvailabilityInfo>();
@@ -38,16 +38,16 @@ export const useCalendar = () => {
 
   useEffect(() => {
     function getCalendarFactory() {
-      if (!web3Provider || !address) return undefined;
+      if (!web3Provider || !address || !signer) return undefined;
       return CalendarFactory__factory.connect(
         REACT_APP_WEB3_CONTRACT_FACTORY_ADDRESS!,
-        web3Provider.getSigner(address)
+        signer
       );
     }
 
     const fac = getCalendarFactory();
     if (fac) setCalendarFactory(fac);
-  }, [REACT_APP_WEB3_CONTRACT_FACTORY_ADDRESS, address, web3Provider]);
+  }, [REACT_APP_WEB3_CONTRACT_FACTORY_ADDRESS, address, signer, web3Provider]);
 
   useEffect(() => {
     async function getCalendar() {
@@ -167,9 +167,7 @@ export const useCalendar = () => {
     });
   };
 
-  const setProfileAvailability = (
-    info: ProfileInfo & AvailabilityInfo
-  ) => {
+  const setProfileAvailability = (info: ProfileInfo & AvailabilityInfo) => {
     setProfile(info);
     setAvailability(info);
   };
