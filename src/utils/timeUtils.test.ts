@@ -76,7 +76,6 @@ describe("fromTotalMins", () => {
 describe("totalMinutes", () => {
   const testData = [
     { input: { hours: 9, minutes: 0 }, expected: 540 },
-    { input: { hours: 9 }, expected: 540 },
     { input: { hours: 9, minutes: 30 }, expected: 570 },
   ];
 
