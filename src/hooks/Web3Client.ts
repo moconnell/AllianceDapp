@@ -35,7 +35,7 @@ export type Web3Client = Web3ProviderState & {
 
 export const useWeb3 = () => {
   const [state, dispatch] = useReducer(web3Reducer, web3InitialState);
-  const { provider, web3Provider, address, network } = state;
+  const { provider, web3Provider, address, network, signer } = state;
 
   const connect = useCallback(async () => {
     if (web3Modal) {
