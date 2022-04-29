@@ -25,7 +25,7 @@ const AvailabilityInput = () => {
   const colSpan = useBreakpointValue({ base: 2, md: 1 });
 
   const from = useWatch({ control, name: "from" }) as Time;
-  const to = useWatch({ control, name: "to" });
+  const to = useWatch({ control, name: "to" }) as Time;
 
   return (
     <VStack w="full" h="full" p={10} alignItems="flex-start" spacing={10}>
@@ -105,7 +105,7 @@ const AvailabilityInput = () => {
               render={({ field: { onChange, value } }) => (
                 <AvailableDays value={value} onChange={onChange} />
               )}
-              rules={{min: DaysOfWeek.Monday}}
+              rules={{ min: DaysOfWeek.Monday }}
             />
           </FormControl>
         </GridItem>

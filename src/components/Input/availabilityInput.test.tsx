@@ -5,19 +5,30 @@ import AvailabilityInput from "./availabilityInput";
 jest.mock("../AvailableDays", () => () => "((AvailableDays))");
 
 describe("<AvailabilityInput />", () => {
-  it("should render correctly", async () => {
-    const defaultValues = {
+  const testData = [
+    {
       location: "London",
       timeZone: "Europe/London",
       from: { hours: 9, minutes: 30 },
       to: { hours: 12, minutes: 0 },
-    } as AvailabilityInfo;
+    },
+    {
+      from: { hours: 9, minutes: 30 },
+    },
+    {
+      to: { hours: 15, minutes: 30 },
+    },
+    {}
+  ];
 
-    const { asFragment } = renderWithFormProvider(
-      <AvailabilityInput />,
-      defaultValues
-    );
+  testData.forEach((defaultValues: AvailabilityInfo) =>
+    it("should render correctly", async () => {
+      const { asFragment } = renderWithFormProvider(
+        <AvailabilityInput />,
+        defaultValues
+      );
 
-    expect(asFragment()).toMatchSnapshot();
-  });
+      expect(asFragment()).toMatchSnapshot();
+    })
+  );
 });

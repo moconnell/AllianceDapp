@@ -1,10 +1,10 @@
 import Time from "../types/time";
 import assert from "assert";
 
-export const totalMinutes = (t: Time) => t.hours * 60 + (t.minutes ?? 0);
+export const totalMinutes = (t: Time) => t.hours * 60 + t.minutes;
 
 export const totalSeconds = (t: Time) =>
-  t.hours * 60 * 60 + (t.minutes ?? 0) * 60 + (t.seconds ?? 0);
+  t.hours * 60 * 60 + t.minutes * 60 + (t.seconds ?? 0);
 
 export const fromTotalMins = (mins: number) => {
   const hours = Math.floor(mins / 60) % 24;
@@ -15,9 +15,9 @@ export const fromTotalMins = (mins: number) => {
 };
 
 export const assertValid = (t?: Time) => {
-  assert(t);
-  assert(t.hours >= 0 && t.hours < 24);
-  assert(t.minutes >= 0 && t.minutes < 60);
+  assert(t, "time undefined");
+  assert(t.hours >= 0 && t.hours < 24, "invalid hours");
+  assert(t.minutes >= 0 && t.minutes < 60, "invalid minutes");
 };
 
 export const compare = (t1: Time, t2: Time) => {
