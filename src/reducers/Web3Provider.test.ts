@@ -14,6 +14,9 @@ describe("web3Reducer", () => {
   const mockWeb3Provider = new ethers.providers.Web3Provider(mockProvider);
   const mockSigner = mockWeb3Provider.getSigner(mockAddress);
 
+  afterEach(() => jest.resetAllMocks());
+  afterAll(() => jest.restoreAllMocks());
+
   const testData = [
     {
       state: { ...web3InitialState, address: mockAddress },

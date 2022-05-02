@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Container,
   Content,
@@ -9,7 +8,7 @@ import {
 import { IconContainer } from "../../components/Modal/components/LoadingTransaction/styles";
 import { ReactComponent as Document } from "../../assets/document.svg";
 import { ReactComponent as Alliance } from "../../assets/alliance.svg";
-import { useCalendar } from "../../hooks/useCalendar";
+import { useCalendar } from "../../hooks";
 import { Navigate } from "react-router-dom";
 import Web3Button from "../../components/Web3Button";
 import { useWeb3Context } from "../../context/Web3Context";

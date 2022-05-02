@@ -1,3 +1,4 @@
+import { useEffect, useMemo } from "react";
 import { Navigate } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import Input from "../../components/Input";
@@ -7,7 +8,6 @@ import DaysOfWeek from "../../types/daysOfWeek";
 import Time from "../../types/time";
 import ProfileInfo from "../../types/profileInfo";
 import AvailabilityInfo from "../../types/availabilityInfo";
-import { useEffect, useMemo } from "react";
 
 const Preferences = () => {
   const { availability, profile, setProfileAvailability } = useCalendar();
@@ -23,7 +23,6 @@ const Preferences = () => {
       defaultValues.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (!defaultValues.location)
       defaultValues.location = defaultValues.timeZone.split("/")[1];
-    console.log(defaultValues);
     return defaultValues;
   }, [availability, profile]);
 
@@ -38,7 +37,9 @@ const Preferences = () => {
     reset(defaultValues);
   }, [defaultValues, reset]);
 
-  if (!address) return <Navigate to="/" />;
+  if (!address) {
+    return <Navigate to="/" />;
+  }
 
   const onValid = (info: ProfileInfo & AvailabilityInfo) => {
     setProfileAvailability(info);
@@ -46,7 +47,7 @@ const Preferences = () => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onValid)}>
+      <form aria-label="form" onSubmit={handleSubmit(onValid)}>
         <Input />
       </form>
     </FormProvider>

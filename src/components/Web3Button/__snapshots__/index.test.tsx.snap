@@ -15,3 +15,52 @@ exports[`<Web3Button /> should render correctly 1`] = `
   </div>
 </DocumentFragment>
 `;
+
+exports[`<Web3Button /> should render correctly 2`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ bbkjqh"
+  >
+    <button
+      class="sc-gsnTZi kKvmkM"
+      data-testid="button"
+      type="button"
+    >
+      Connect Wallet
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Web3Button /> should render correctly 3`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ bbkjqh"
+  >
+    <button
+      class="sc-gsnTZi kKvmkM"
+      data-testid="button"
+      title="Disconnect undefined null"
+      type="button"
+    >
+      Disconnect Wallet
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Web3Button /> should render correctly 4`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ bbkjqh"
+  >
+    <button
+      class="sc-gsnTZi kKvmkM"
+      data-testid="button"
+      type="button"
+    >
+      Loading...
+    </button>
+  </div>
+</DocumentFragment>
+`;
