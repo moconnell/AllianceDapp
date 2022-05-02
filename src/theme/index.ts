@@ -10,16 +10,15 @@ const inputStyles = {
       field: {
         color: "#f0f0f0",
         borderColor: "raid.800",
+        borderWidth: "2px",
         background: "#343a40",
         _focus: {
           borderColor: "raid.50",
           boxShadow: "raid.50",
-          borderWidth: "2px",
         },
         _hover: {
           borderColor: "raid.50",
           boxShadow: "raid.50",
-          borderWidth: "2px",
         },
         ">option": {
           background: "inherit",
