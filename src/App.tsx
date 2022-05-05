@@ -1,5 +1,4 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 import "./App.css";
 import Book from "./containers/Book";
@@ -8,6 +7,7 @@ import Header from "./components/Header";
 import Preferences from "./containers/Preferences";
 import Meetings from "./containers/Meetings";
 import ErrorFallback from "./ErrorFallback";
+import { Container, Content } from "./styles";
 
 const App = () => {
   return (
@@ -22,18 +22,22 @@ const App = () => {
         overflowY: "scroll",
       }}
     >
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <Container>
         <Header />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/book" element={<Book />} />
-            <Route path="/meetings" element={<Meetings />} />
-            <Route path="/profile" element={<Preferences />} />
-            <Route element={<Home />} />
-          </Routes>
-        </BrowserRouter>
-      </ErrorBoundary>
+        <Content>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/book/:calendarAddress" element={<Book />} />
+                <Route path="/meetings" element={<Meetings />} />
+                <Route path="/profile" element={<Preferences />} />
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
+            </BrowserRouter>
+          </ErrorBoundary>
+        </Content>
+      </Container>
     </main>
   );
 };
