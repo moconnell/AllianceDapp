@@ -66,7 +66,7 @@
     "prettier": "^2.6.2",
     "react-error-overlay": "^6.0.11",
     "react-select-event": "^5.5.0",
-    "ts-jest": "^27.1.4",
+    "ts-jest": "^28.0.1",
     "ts-migrate": "^0.1.28",
     "ts-node": "^10.7.0"
   },
