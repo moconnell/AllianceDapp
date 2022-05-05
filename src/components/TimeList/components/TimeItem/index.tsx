@@ -1,9 +1,8 @@
-import Time from "../../../../types/time";
 import { formatTime } from "../../../../utils/formatDate";
 import { TimeButton } from "./styles";
 
 interface TimeItemProps {
-  value: Time;
+  value: Date;
   active: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }

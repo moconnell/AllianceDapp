@@ -7,13 +7,13 @@ import {
   TimeContainer,
 } from "./styles";
 import { ReactComponent as Clock } from "../../assets/clock.svg";
-import Time from "../../types/time";
 
 interface TimeListProps {
-  times: Time[];
-  selectedTime?: Time;
+  times: Date[];
+  timeZone: string;
+  selectedTime?: Date;
   duration?: number;
-  onChange?: (time: Time) => void;
+  onChange?: (time: Date) => void;
 }
 
 const TimeList = ({
