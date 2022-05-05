@@ -27,3 +27,10 @@ export const compare = (t1: Time, t2: Time) => {
   if (s1 < s2) return -1;
   return 1;
 };
+
+export const tomorrow = () => {
+  let d = new Date();
+  d.setDate(d.getDate() + 1);
+  d.setHours(0, 0, 0, 0);
+  return d;
+};

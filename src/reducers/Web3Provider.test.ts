@@ -55,7 +55,7 @@ describe("web3Reducer", () => {
         provider: mockProvider,
         web3Provider: mockWeb3Provider,
         address: mockAddress,
-        signer: null,
+        signer: undefined,
         connect: null,
         disconnect: null,
       },

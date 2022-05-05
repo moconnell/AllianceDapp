@@ -1,10 +1,11 @@
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import MeetingCardList from "../../components/MeetingCardList";
 import { useCalendar } from "../../hooks";
 import Meeting from "../../types/meeting";
 import { useEffect, useState } from "react";
 import Calendar from "../../components/Calendar";
-import { Container, Flex } from "@chakra-ui/react";
+import { Container, Content } from "./styles";
+import { Flex } from "@chakra-ui/react";
 
 const Meetings = () => {
   const { calendar, getMeetings } = useCalendar();
@@ -19,24 +20,32 @@ const Meetings = () => {
         date.getDate()
       );
 
-      if (meetingsOnDate) setMeetings(meetingsOnDate);
+      if (meetingsOnDate) {
+        console.log(`Meetings on ${date}`, meetingsOnDate);
+        setMeetings(meetingsOnDate);
+      }
     }
 
     loadMeetings();
   }, [calendar, date, getMeetings]);
 
-  if (!calendar) return <Navigate to="/" />;
+  // if (!calendar) return <Navigate to="/" />;
 
   return (
-    <Container maxW="container.xl" p={0}>
-      <Flex
-        h={{ base: "auto", md: "100%" }}
-        py={10}
-        direction={{ base: "column", md: "row" }}
-      >
-        <Calendar onChange={setDate} />
-        <MeetingCardList meetings={meetings} />
-      </Flex>
+    <Container>
+      <Content>
+        <Flex
+          h={{ base: "auto", md: "100%" }}
+          py={10}
+          direction={{ base: "column", md: "row" }}
+        >
+          <Calendar
+            defaultValue={date}
+            onChange={setDate}
+          />
+          <MeetingCardList meetings={meetings} />
+        </Flex>
+      </Content>
     </Container>
   );
 };

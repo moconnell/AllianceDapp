@@ -54,6 +54,7 @@ export function web3Reducer(
         web3Provider: action.web3Provider,
         address: action.address,
         network: action.network,
+        signer: action.signer
       };
     case "SET_ADDRESS":
       return {

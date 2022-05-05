@@ -2,6 +2,7 @@ import {
   assertValid,
   compare,
   fromTotalMins,
+  tomorrow,
   totalMinutes,
   totalSeconds,
 } from "./timeUtils";
@@ -96,5 +97,16 @@ describe("totalSeconds", () => {
     it(`should convert ${input.hours}:${input.minutes}`, () => {
       expect(totalSeconds(input)).toStrictEqual(expected);
     });
+  });
+});
+
+describe("tomorrow", () => {
+  it("should return tomorrow's date", () => {
+    const d = tomorrow();
+    const now = new Date();
+    expect(d.getDate()).toBe(now.getDate() + 1);
+    expect(d.getHours()).toBe(0);
+    expect(d.getMinutes()).toBe(0);
+    expect(d.getSeconds()).toBe(0);
   });
 });

@@ -17,12 +17,13 @@ const Preferences = () => {
     const defaultValues = { ...profile, ...availability };
     if (!defaultValues.availableDays)
       defaultValues.availableDays = DaysOfWeek.MonFri;
-    if (!defaultValues.from) defaultValues.from = { hours: 9 } as Time;
-    if (!defaultValues.to) defaultValues.to = { hours: 14 } as Time;
+    if (!defaultValues.from) defaultValues.from = { hours: 9, minutes: 0 } as Time;
+    if (!defaultValues.to) defaultValues.to = { hours: 12, minutes: 0 } as Time;
     if (!defaultValues.timeZone)
       defaultValues.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (!defaultValues.location)
       defaultValues.location = defaultValues.timeZone.split("/")[1];
+
     return defaultValues;
   }, [availability, profile]);
 
@@ -42,6 +43,7 @@ const Preferences = () => {
   }
 
   const onValid = (info: ProfileInfo & AvailabilityInfo) => {
+    console.log("setProfileAvailability...");
     setProfileAvailability(info);
   };
 

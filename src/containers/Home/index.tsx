@@ -16,7 +16,7 @@ import { useWeb3Context } from "../../context/Web3Context";
 const Home = () => {
   const { calendar } = useCalendar();
   const { address } = useWeb3Context();
-  
+
   if (calendar) return <Navigate to="/meetings" />;
   if (address) return <Navigate to="/profile" />;
 
@@ -36,7 +36,9 @@ const Home = () => {
             your network of colleagues. By utilizing the combination of
             connectivity to your 0x identity and the utility of Google or iCloud
             calendar, you can schedule a meeting with a simple handshake.
-            Designed by the Raid Guild 2021. Connect wallet to get started.
+            Designed by Raid Guild (2022).
+            <br />
+            Connect wallet to get started.
           </DescriptionText>
 
           <Web3Button />

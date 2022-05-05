@@ -24,18 +24,18 @@ import type {
   TypedEvent,
   TypedListener,
   OnEvent,
-} from "../common";
+} from "./common";
 
 export type MeetingStruct = {
+  attendee: string;
   startMinutes: BigNumberish;
   durationMinutes: BigNumberish;
-  attendee: string;
 };
 
-export type MeetingStructOutput = [number, number, string] & {
+export type MeetingStructOutput = [string, number, number] & {
+  attendee: string;
   startMinutes: number;
   durationMinutes: number;
-  attendee: string;
 };
 
 export type ProfileStruct = {
@@ -55,25 +55,25 @@ export type ProfileStructOutput = [string, string, string, string, string] & {
 };
 
 export type AvailabilityStruct = {
+  location: string;
+  timeZone: string;
   availableDays: BigNumberish;
   earliestStartMinutes: BigNumberish;
   minutesAvailable: BigNumberish;
-  location: string;
-  timeZone: string;
 };
 
 export type AvailabilityStructOutput = [
-  number,
-  number,
-  number,
   string,
-  string
+  string,
+  number,
+  number,
+  number
 ] & {
+  location: string;
+  timeZone: string;
   availableDays: number;
   earliestStartMinutes: number;
   minutesAvailable: number;
-  location: string;
-  timeZone: string;
 };
 
 export interface CalendarInterface extends utils.Interface {
@@ -84,12 +84,12 @@ export interface CalendarInterface extends utils.Interface {
     "dateToMeetings(uint256,uint256,uint256,uint256)": FunctionFragment;
     "getAvailableTimes(uint256,uint256,uint256,uint16)": FunctionFragment;
     "getMeetings(uint256,uint256,uint256)": FunctionFragment;
-    "initialize(address,(string,string,string,string,string),(uint8,uint16,uint16,string,string))": FunctionFragment;
+    "initialize(address,(string,string,string,string,string),(string,string,uint8,uint16,uint16))": FunctionFragment;
     "owner()": FunctionFragment;
     "profile()": FunctionFragment;
-    "setAvailability((uint8,uint16,uint16,string,string))": FunctionFragment;
+    "setAvailability((string,string,uint8,uint16,uint16))": FunctionFragment;
     "setProfile((string,string,string,string,string))": FunctionFragment;
-    "setProfileAvailability((string,string,string,string,string),(uint8,uint16,uint16,string,string))": FunctionFragment;
+    "setProfileAvailability((string,string,string,string,string),(string,string,uint8,uint16,uint16))": FunctionFragment;
   };
 
   getFunction(
@@ -267,12 +267,12 @@ export interface Calendar extends BaseContract {
     availability(
       overrides?: CallOverrides
     ): Promise<
-      [number, number, number, string, string] & {
+      [string, string, number, number, number] & {
+        location: string;
+        timeZone: string;
         availableDays: number;
         earliestStartMinutes: number;
         minutesAvailable: number;
-        location: string;
-        timeZone: string;
       }
     >;
 
@@ -301,10 +301,10 @@ export interface Calendar extends BaseContract {
       arg3: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [number, number, string] & {
+      [string, number, number] & {
+        attendee: string;
         startMinutes: number;
         durationMinutes: number;
-        attendee: string;
       }
     >;
 
@@ -364,12 +364,12 @@ export interface Calendar extends BaseContract {
   availability(
     overrides?: CallOverrides
   ): Promise<
-    [number, number, number, string, string] & {
+    [string, string, number, number, number] & {
+      location: string;
+      timeZone: string;
       availableDays: number;
       earliestStartMinutes: number;
       minutesAvailable: number;
-      location: string;
-      timeZone: string;
     }
   >;
 
@@ -398,10 +398,10 @@ export interface Calendar extends BaseContract {
     arg3: BigNumberish,
     overrides?: CallOverrides
   ): Promise<
-    [number, number, string] & {
+    [string, number, number] & {
+      attendee: string;
       startMinutes: number;
       durationMinutes: number;
-      attendee: string;
     }
   >;
 
@@ -461,12 +461,12 @@ export interface Calendar extends BaseContract {
     availability(
       overrides?: CallOverrides
     ): Promise<
-      [number, number, number, string, string] & {
+      [string, string, number, number, number] & {
+        location: string;
+        timeZone: string;
         availableDays: number;
         earliestStartMinutes: number;
         minutesAvailable: number;
-        location: string;
-        timeZone: string;
       }
     >;
 
@@ -495,10 +495,10 @@ export interface Calendar extends BaseContract {
       arg3: BigNumberish,
       overrides?: CallOverrides
     ): Promise<
-      [number, number, string] & {
+      [string, number, number] & {
+        attendee: string;
         startMinutes: number;
         durationMinutes: number;
-        attendee: string;
       }
     >;
 

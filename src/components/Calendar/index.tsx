@@ -8,9 +8,14 @@ import { Fragment } from "react";
 interface CalendarProps {
   onChange?: OnChangeDateCallback | OnChangeDateRangeCallback;
   defaultValue?: Date | Date[];
+  tileDisabled?: (date: Date) => boolean;
 }
 
-const Calendar = ({ onChange, defaultValue }: CalendarProps) => (
+const Calendar = ({
+  onChange,
+  defaultValue = new Date(),
+  tileDisabled = () => false,
+}: CalendarProps) => (
   <ReactCalendar
     onDrillDown={({ activeStartDate, view }) =>
       console.log("Drilled down to: ", activeStartDate, view)
@@ -20,6 +25,7 @@ const Calendar = ({ onChange, defaultValue }: CalendarProps) => (
     )}
     onChange={onChange}
     defaultValue={defaultValue}
+    tileDisabled={({ date }) => tileDisabled(date)}
   />
 );
 

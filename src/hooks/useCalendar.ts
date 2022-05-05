@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { useWeb3Context } from "../context/Web3Context";
 import assert from "assert";
@@ -18,6 +18,7 @@ import {
 import Meeting from "../types/meeting";
 import ProfileInfo from "../types/profileInfo";
 import AvailabilityInfo from "../types/availabilityInfo";
+import Time from "src/types/time";
 
 const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
@@ -76,9 +77,9 @@ export const useCalendar = () => {
       setProfile(newProfile);
 
       let newAvailability = await calendar.availability();
-      const from = fromTotalMins(newAvailability.earliestTimeInMinutes);
+      const from = fromTotalMins(newAvailability.earliestStartMinutes);
       const to = fromTotalMins(
-        newAvailability.earliestTimeInMinutes + newAvailability.minutesAvailable
+        newAvailability.earliestStartMinutes + newAvailability.minutesAvailable
       );
       setAvailability({ ...newAvailability, from, to });
     }
@@ -115,7 +116,7 @@ export const useCalendar = () => {
 
       const a = {
         availableDays: availability.availableDays ?? DaysOfWeek.None,
-        earliestTimeInMinutes: totalMinutes(availability.from!),
+        earliestStartMinutes: totalMinutes(availability.from!),
         minutesAvailable:
           totalMinutes(availability.to!) - totalMinutes(availability.from!),
         location: availability.location!,
@@ -146,26 +147,86 @@ export const useCalendar = () => {
     REACT_APP_WEB3_CONTRACT_FACTORY_ADDRESS,
   ]);
 
-  const getMeetings = async (year: number, month: number, date: number) => {
-    if (!calendar) return undefined;
+  const getMeetings = useCallback(
+    async (year: number, month: number, date: number) => {
+      if (!calendar) return undefined;
 
-    const meetingsOnDate = await calendar.getMeetings(year, month, date);
+      console.log(`getMeetings(year: ${year}, month: ${month}, date: ${date})`);
 
-    return meetingsOnDate.map((m) => {
-      let from = new Date(date);
-      from.setHours(m.hour, m.minute);
+      const meetingsOnDate = await calendar.getMeetings(year, month, date);
 
-      let to = new Date(from);
-      to.setMinutes(to.getMinutes() + m.duration);
+      return meetingsOnDate.map((m) => {
+        let from = new Date(date);
+        from.setMinutes(m.startMinutes);
 
-      return {
-        date: from,
-        endDate: to,
-        attendee: m.attendee,
-        description: `${m.duration} minute meeting`,
-      } as Meeting;
-    });
-  };
+        let to = new Date(from);
+        to.setMinutes(to.getMinutes() + m.durationMinutes);
+
+        return {
+          date: from,
+          endDate: to,
+          attendee: m.attendee,
+          description: `${m.durationMinutes} minute meeting`,
+        } as Meeting;
+      });
+    },
+    [calendar]
+  );
+
+  const getProfileAvailability = useCallback(
+    async (calendarAddress: string) => {
+      if (!web3Provider) return undefined;
+
+      console.log(
+        `getProfileAvailability(calendarAddress: ${calendarAddress})`
+      );
+
+      const otherCalendar = Calendar__factory.connect(
+        calendarAddress,
+        web3Provider
+      );
+
+      const pa: [ProfileInfo, AvailabilityInfo] = [
+        await otherCalendar.profile(),
+        await otherCalendar.availability(),
+      ];
+
+      return pa;
+    },
+    [web3Provider]
+  );
+
+  const getAvailableTimes = useCallback(
+    async (calendarAddress: string, date: Date, durationMinutes: number) => {
+      if (!web3Provider) return undefined;
+
+      console.log(
+        `getAvailableTimes(calendarAddress: ${calendarAddress}, date: ${date}, duration: ${durationMinutes})`
+      );
+
+      const otherCalendar = Calendar__factory.connect(
+        calendarAddress,
+        web3Provider
+      );
+
+      const times = await otherCalendar.getAvailableTimes(
+        date.getFullYear(),
+        date.getMonth() + 1,
+        date.getDate(),
+        durationMinutes
+      );
+
+      return times
+        .filter((startMinutes) => startMinutes > 0)
+        .map((startMinutes) => {
+          return {
+            hours: startMinutes / 60,
+            minutes: startMinutes % 60,
+          } as Time;
+        });
+    },
+    [web3Provider]
+  );
 
   const setProfileAvailability = (info: ProfileInfo & AvailabilityInfo) => {
     setProfile(info);
@@ -175,7 +236,9 @@ export const useCalendar = () => {
   return {
     availability,
     calendar,
+    getAvailableTimes,
     getMeetings,
+    getProfileAvailability,
     profile,
     setProfileAvailability,
   };

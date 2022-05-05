@@ -13,13 +13,17 @@ import * as Contracts from ".";
 declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
+      name: "Initializable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Initializable__factory>;
+    getContractFactory(
+      name: "ContextUpgradeable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ContextUpgradeable__factory>;
+    getContractFactory(
       name: "Calendar",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Calendar__factory>;
-    getContractFactory(
-      name: "CustomOwnable",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.CustomOwnable__factory>;
     getContractFactory(
       name: "CalendarFactory",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -28,17 +32,26 @@ declare module "hardhat/types/runtime" {
       name: "CalendarStorage",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.CalendarStorage__factory>;
+    getContractFactory(
+      name: "CustomOwnable",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.CustomOwnable__factory>;
 
+    getContractAt(
+      name: "Initializable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Initializable>;
+    getContractAt(
+      name: "ContextUpgradeable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ContextUpgradeable>;
     getContractAt(
       name: "Calendar",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Calendar>;
-    getContractAt(
-      name: "CustomOwnable",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.CustomOwnable>;
     getContractAt(
       name: "CalendarFactory",
       address: string,
@@ -49,6 +62,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.CalendarStorage>;
+    getContractAt(
+      name: "CustomOwnable",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.CustomOwnable>;
 
     // default types
     getContractFactory(
