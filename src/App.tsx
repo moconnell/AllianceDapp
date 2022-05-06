@@ -8,8 +8,11 @@ import Preferences from "./containers/Preferences";
 import Meetings from "./containers/Meetings";
 import ErrorFallback from "./ErrorFallback";
 import { Container, Content } from "./styles";
+import { useToast } from "@chakra-ui/react";
 
 const App = () => {
+  const toast = useToast();
+
   return (
     <main
       style={{
@@ -25,7 +28,19 @@ const App = () => {
       <Container>
         <Header />
         <Content>
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <ErrorBoundary
+            FallbackComponent={ErrorFallback}
+            onError={(e) => {
+              console.error(e);
+              toast({
+                title: "Error",
+                description: e.message,
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+              });
+            }}
+          >
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Home />} />
