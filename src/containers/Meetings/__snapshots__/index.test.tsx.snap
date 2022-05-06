@@ -267,7 +267,7 @@ exports[`<Meetings /> should render correctly 1`] = `
                       </abbr>
                     </button>
                     <button
-                      class="react-calendar__tile react-calendar__tile--now react-calendar__tile--active react-calendar__tile--range react-calendar__tile--rangeStart react-calendar__tile--rangeEnd react-calendar__tile--rangeBothEnds react-calendar__month-view__days__day"
+                      class="react-calendar__tile react-calendar__month-view__days__day"
                       style="flex-basis: 14.285714285714286%; flex-shrink: 0; flex-grow: 0; overflow: hidden;"
                       type="button"
                     >
@@ -278,7 +278,7 @@ exports[`<Meetings /> should render correctly 1`] = `
                       </abbr>
                     </button>
                     <button
-                      class="react-calendar__tile react-calendar__month-view__days__day"
+                      class="react-calendar__tile react-calendar__tile--now react-calendar__tile--active react-calendar__tile--range react-calendar__tile--rangeStart react-calendar__tile--rangeEnd react-calendar__tile--rangeBothEnds react-calendar__month-view__days__day"
                       style="flex-basis: 14.285714285714286%; flex-shrink: 0; flex-grow: 0; overflow: hidden;"
                       type="button"
                     >

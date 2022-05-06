@@ -1,8 +1,8 @@
-import { formatTime } from "../../../../utils/formatDate";
+import { DateTime } from "luxon";
 import { TimeButton } from "./styles";
 
 interface TimeItemProps {
-  value: Date;
+  value: DateTime;
   active: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
@@ -12,7 +12,7 @@ const TimeItem = ({ value, active, onClick }: TimeItemProps) => (
     onClick={onClick}
     style={{ backgroundColor: active ? "#ff3864" : "transparent" }}
   >
-    {formatTime(value)}
+    {value.toLocaleString(DateTime.TIME_SIMPLE)}
   </TimeButton>
 );
 

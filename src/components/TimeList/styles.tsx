@@ -6,9 +6,9 @@ export const TimeContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: auto;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-color: #ff3864 transparent;
-  padding-right: 10px;
+  padding: 0 10px 0 10px;
 
   // For Google Chrome
   &::-webkit-scrollbar {
@@ -57,41 +57,53 @@ export const TimeContainer = styled.div`
 export const StyledSubtitle = styled.span`
   font-family: Inter;
   font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 0.8em;
+  line-height: 1em;
   display: flex;
+  justify-content: center;
   align-items: center;
+  color: #ffffff;
+  margin: 0 0 0.3em 0.3em;
+`;
 
-  /* Raid Red */
-  color: #ff3864;
-
-  margin-bottom: 12px;
+export const SubText = styled.div`
+  font-family: Inter;
+  font-style: normal;
+  font-size: 0.8em;
+  line-height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  margin: 1.1em 0 0 0;
 `;
 
 export const Container = styled.div`
-  padding: 0px 10px;
+  padding: 0 5px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 350px;
   max-height: 350px;
+  max-width: 250px;
 `;
 
-export const StyledTitle = styled.span`
+export const StyledTitle = styled.div`
   font-family: Inter;
   font-style: normal;
   font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: 0.9em;
   display: flex;
+  justify-content: center;
   align-items: center;
-  /* Raid Red */
-  color: #ff3864;
-  margin-bottom: 12px;
+  color: #ffffff;
+  margin: 0 0 1.4em 0;
 `;
 
 export const InlineContainer = styled.div`
-  margin-right: 4px;
+  margin: 2px 8px 8px 0;
   display: flex;
-  margin-bottom: 12px;
+  justify-content: center;
+  align-items: center;
 `;

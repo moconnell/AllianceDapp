@@ -26,43 +26,45 @@ import type {
   OnEvent,
 } from "../common";
 
-export type ProfileStruct = {
-  description: string;
-  email: string;
-  picture: string;
-  url: string;
-  username: string;
-};
+export declare namespace CalendarTypes {
+  export type ProfileStruct = {
+    description: string;
+    email: string;
+    picture: string;
+    url: string;
+    username: string;
+  };
 
-export type ProfileStructOutput = [string, string, string, string, string] & {
-  description: string;
-  email: string;
-  picture: string;
-  url: string;
-  username: string;
-};
+  export type ProfileStructOutput = [string, string, string, string, string] & {
+    description: string;
+    email: string;
+    picture: string;
+    url: string;
+    username: string;
+  };
 
-export type AvailabilityStruct = {
-  location: string;
-  timeZone: string;
-  availableDays: BigNumberish;
-  earliestStartMinutes: BigNumberish;
-  minutesAvailable: BigNumberish;
-};
+  export type AvailabilityStruct = {
+    location: string;
+    timeZone: string;
+    availableDays: BigNumberish;
+    earliestStartMinutes: BigNumberish;
+    minutesAvailable: BigNumberish;
+  };
 
-export type AvailabilityStructOutput = [
-  string,
-  string,
-  number,
-  number,
-  number
-] & {
-  location: string;
-  timeZone: string;
-  availableDays: number;
-  earliestStartMinutes: number;
-  minutesAvailable: number;
-};
+  export type AvailabilityStructOutput = [
+    string,
+    string,
+    number,
+    number,
+    number
+  ] & {
+    location: string;
+    timeZone: string;
+    availableDays: number;
+    earliestStartMinutes: number;
+    minutesAvailable: number;
+  };
+}
 
 export interface CalendarFactoryInterface extends utils.Interface {
   functions: {
@@ -77,7 +79,7 @@ export interface CalendarFactoryInterface extends utils.Interface {
 
   encodeFunctionData(
     functionFragment: "createCalendar",
-    values: [ProfileStruct, AvailabilityStruct]
+    values: [CalendarTypes.ProfileStruct, CalendarTypes.AvailabilityStruct]
   ): string;
   encodeFunctionData(functionFragment: "remove", values?: undefined): string;
   encodeFunctionData(
@@ -154,8 +156,8 @@ export interface CalendarFactory extends BaseContract {
 
   functions: {
     createCalendar(
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -167,8 +169,8 @@ export interface CalendarFactory extends BaseContract {
   };
 
   createCalendar(
-    _profile: ProfileStruct,
-    _availability: AvailabilityStruct,
+    _profile: CalendarTypes.ProfileStruct,
+    _availability: CalendarTypes.AvailabilityStruct,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -180,8 +182,8 @@ export interface CalendarFactory extends BaseContract {
 
   callStatic: {
     createCalendar(
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -212,8 +214,8 @@ export interface CalendarFactory extends BaseContract {
 
   estimateGas: {
     createCalendar(
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -226,8 +228,8 @@ export interface CalendarFactory extends BaseContract {
 
   populateTransaction: {
     createCalendar(
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 

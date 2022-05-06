@@ -3,18 +3,18 @@
 exports[`<TimeList /> should render correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-hKMtZM itofvw"
+    class="sc-eCYdqJ jFyvCC"
   >
-    <span
-      class="sc-eCYdqJ jXlBzm"
+    <div
+      class="sc-jSMfEi Teyip"
     >
       Select a time
-    </span>
+    </div>
     <div
-      class="sc-jSMfEi gWnnJL"
+      class="sc-gKXOVf itiFUh"
     >
       <div
-        class="sc-jSMfEi gWnnJL"
+        class="sc-gKXOVf itiFUh"
       >
         <svg>
           clock.svg
@@ -22,68 +22,85 @@ exports[`<TimeList /> should render correctly 1`] = `
       </div>
     </div>
     <div
-      class="sc-gsnTZi ecdcmO"
+      class="sc-gsnTZi efgEfA"
     >
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
+        style="background-color: transparent;"
+      >
+        9:00 AM
+      </button>
+      <button
+        class="sc-bczRLJ fYCUyx"
+        style="background-color: transparent;"
+      >
+        9:30 AM
+      </button>
+      <button
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         10:00 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         10:30 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         11:00 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         11:30 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         12:00 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
+        style="background-color: transparent;"
+      >
+        12:30 PM
+      </button>
+      <button
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         1:00 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         1:30 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         2:00 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         2:30 PM
       </button>
-      <button
-        class="sc-bczRLJ gfvuLZ"
-        style="background-color: transparent;"
-      >
-        3:00 PM
-      </button>
+    </div>
+    <div
+      class="sc-hKMtZM ftvvFQ"
+    >
+      Times shown in local time
     </div>
   </div>
 </DocumentFragment>
@@ -92,18 +109,18 @@ exports[`<TimeList /> should render correctly 1`] = `
 exports[`<TimeList /> should render correctly 2`] = `
 <DocumentFragment>
   <div
-    class="sc-hKMtZM itofvw"
+    class="sc-eCYdqJ jFyvCC"
   >
-    <span
-      class="sc-eCYdqJ jXlBzm"
+    <div
+      class="sc-jSMfEi Teyip"
     >
       Select a time
-    </span>
+    </div>
     <div
-      class="sc-jSMfEi gWnnJL"
+      class="sc-gKXOVf itiFUh"
     >
       <div
-        class="sc-jSMfEi gWnnJL"
+        class="sc-gKXOVf itiFUh"
       >
         <svg>
           clock.svg
@@ -111,68 +128,85 @@ exports[`<TimeList /> should render correctly 2`] = `
       </div>
     </div>
     <div
-      class="sc-gsnTZi ecdcmO"
+      class="sc-gsnTZi efgEfA"
     >
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: rgb(255, 56, 100);"
+      >
+        9:00 AM
+      </button>
+      <button
+        class="sc-bczRLJ fYCUyx"
+        style="background-color: transparent;"
+      >
+        9:30 AM
+      </button>
+      <button
+        class="sc-bczRLJ fYCUyx"
+        style="background-color: transparent;"
       >
         10:00 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         10:30 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         11:00 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         11:30 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         12:00 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
+        style="background-color: transparent;"
+      >
+        12:30 PM
+      </button>
+      <button
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         1:00 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         1:30 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         2:00 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         2:30 PM
       </button>
-      <button
-        class="sc-bczRLJ gfvuLZ"
-        style="background-color: transparent;"
-      >
-        3:00 PM
-      </button>
+    </div>
+    <div
+      class="sc-hKMtZM ftvvFQ"
+    >
+      Times shown in local time
     </div>
   </div>
 </DocumentFragment>
@@ -181,92 +215,109 @@ exports[`<TimeList /> should render correctly 2`] = `
 exports[`<TimeList /> should render correctly 3`] = `
 <DocumentFragment>
   <div
-    class="sc-hKMtZM itofvw"
+    class="sc-eCYdqJ jFyvCC"
   >
-    <span
-      class="sc-eCYdqJ jXlBzm"
+    <div
+      class="sc-jSMfEi Teyip"
     >
       Select a time
-    </span>
+    </div>
     <div
-      class="sc-jSMfEi gWnnJL"
+      class="sc-gKXOVf itiFUh"
     >
       <div
-        class="sc-jSMfEi gWnnJL"
+        class="sc-gKXOVf itiFUh"
       >
         <svg>
           clock.svg
         </svg>
       </div>
       <span
-        class="sc-dkzDqf dCXbfI"
+        class="sc-dkzDqf jtoqIZ"
       >
-        30 min
+        30 mins
       </span>
     </div>
     <div
-      class="sc-gsnTZi ecdcmO"
+      class="sc-gsnTZi efgEfA"
     >
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: rgb(255, 56, 100);"
+      >
+        9:00 AM
+      </button>
+      <button
+        class="sc-bczRLJ fYCUyx"
+        style="background-color: transparent;"
+      >
+        9:30 AM
+      </button>
+      <button
+        class="sc-bczRLJ fYCUyx"
+        style="background-color: transparent;"
       >
         10:00 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         10:30 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         11:00 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         11:30 AM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         12:00 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
+        style="background-color: transparent;"
+      >
+        12:30 PM
+      </button>
+      <button
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         1:00 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         1:30 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         2:00 PM
       </button>
       <button
-        class="sc-bczRLJ gfvuLZ"
+        class="sc-bczRLJ fYCUyx"
         style="background-color: transparent;"
       >
         2:30 PM
       </button>
-      <button
-        class="sc-bczRLJ gfvuLZ"
-        style="background-color: transparent;"
-      >
-        3:00 PM
-      </button>
+    </div>
+    <div
+      class="sc-hKMtZM ftvvFQ"
+    >
+      Times shown in local time
     </div>
   </div>
 </DocumentFragment>

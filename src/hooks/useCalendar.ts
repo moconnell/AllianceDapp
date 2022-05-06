@@ -18,7 +18,7 @@ import {
 import Meeting from "../types/meeting";
 import ProfileInfo from "../types/profileInfo";
 import AvailabilityInfo from "../types/availabilityInfo";
-import Time from "src/types/time";
+import { DateTime } from "luxon";
 
 const NULL_ADDRESS = "0x0000000000000000000000000000000000000000";
 
@@ -209,20 +209,26 @@ export const useCalendar = () => {
         web3Provider
       );
 
-      const times = await otherCalendar.getAvailableTimes(
-        date.getFullYear(),
-        date.getMonth() + 1,
-        date.getDate(),
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      const { times, timeZone } = await otherCalendar.getAvailableTimes(
+        year,
+        month,
+        day,
         durationMinutes
       );
 
       return times
         .filter((startMinutes) => startMinutes > 0)
         .map((startMinutes) => {
-          return {
-            hours: startMinutes / 60,
-            minutes: startMinutes % 60,
-          } as Time;
+          const hour = Math.floor(startMinutes / 60),
+            minute = startMinutes % 60;
+
+          return DateTime.fromObject(
+            { year, month, day, hour, minute },
+            { zone: timeZone }
+          );
         });
     },
     [web3Provider]

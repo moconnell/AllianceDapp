@@ -1,21 +1,32 @@
-import { Button, Container, Flex, Heading } from "@chakra-ui/react";
+import {
+  Button,
+  Container,
+  Flex,
+  Heading,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Tr,
+} from "@chakra-ui/react";
+import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import { useParams } from "react-router-dom";
-import { useCalendar } from "src/hooks";
-import DaysOfWeek from "src/types/daysOfWeek";
-import { tomorrow } from "src/utils/timeUtils";
+import { useCalendar } from "../../hooks";
+import DaysOfWeek from "../../types/daysOfWeek";
+import { tomorrow } from "../../utils/timeUtils";
 import ModalComponent from "../../components/Modal";
 import LoadingTransaction from "../../components/Modal/components/LoadingTransaction";
 import TimeList from "../../components/TimeList";
-import Time from "../../types/time";
 
 const Book = () => {
   const { calendarAddress } = useParams();
   const { getProfileAvailability, getAvailableTimes } = useCalendar();
-  const [selectedTime, setselectedTime] = useState<Time | undefined>(undefined);
+  const [selectedTime, setselectedTime] = useState<DateTime | undefined>();
   const [availableDays, setAvailableDays] = useState(DaysOfWeek.None);
-  const [availableTimes, setAvailableTimes] = useState([] as Time[]);
+  const [availableTimes, setAvailableTimes] = useState([] as DateTime[]);
+  const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [timeZone, setTimeZone] = useState("");
   const [username, setUsername] = useState("");
@@ -29,11 +40,15 @@ const Book = () => {
       if (!calendarAddress) return;
       const pa = await getProfileAvailability(calendarAddress);
       if (pa) {
-        const [{ username }, { availableDays, location, timeZone }] = pa;
+        const [
+          { username, description },
+          { availableDays, location, timeZone },
+        ] = pa;
         if (availableDays) setAvailableDays(availableDays);
         if (location) setLocation(location);
         if (timeZone) setTimeZone(timeZone);
         if (username) setUsername(username);
+        if (description) setDescription(description);
       }
     };
 
@@ -62,8 +77,8 @@ const Book = () => {
   }
 
   return (
-    <Container maxW="container.xl" p={0}>
-      <Heading>
+    <Container maxW="container.xl" p={1}>
+      <Heading color="raid.100" fontFamily="Inter">
         Book a {durationMinutes} minute meeting{username && ` with ${username}`}
         ...
       </Heading>
@@ -72,27 +87,67 @@ const Book = () => {
         py={10}
         direction={{ base: "column", md: "row" }}
       >
-        <Calendar
-          onChange={setDate}
-          defaultValue={date}
-          tileDisabled={({ date }) =>
-            date < now ||
-            ((1 << date.getDay()) & availableDays) !== 1 << date.getDay()
-          }
-        />
-
-        <TimeList
-          selectedTime={selectedTime}
-          onChange={(time: any) => {
-            setselectedTime(time);
-          }}
-          times={availableTimes}
-          timeZone={timeZone}
-          duration={durationMinutes}
-        />
+        {(location || timeZone || description) && (
+          <Container paddingTop="24">
+            <Table>
+              <Tbody fontFamily="Inter">
+                {location && (
+                  <Tr>
+                    <Th border={0} color="gray.500">
+                      Location
+                    </Th>
+                    <Td border={0} color="gray.300" fontSize="sm">
+                      {location}
+                    </Td>
+                  </Tr>
+                )}
+                {timeZone && (
+                  <Tr>
+                    <Th border={0} color="gray.500">
+                      Time-Zone
+                    </Th>
+                    <Td border={0} color="gray.300" fontSize="sm">
+                      {timeZone}
+                    </Td>
+                  </Tr>
+                )}
+                {description && (
+                  <Tr>
+                    <Th border={0} color="gray.500">
+                      About
+                    </Th>
+                    <Td border={0} color="gray.300" fontSize="sm">
+                      {description}
+                    </Td>
+                  </Tr>
+                )}
+              </Tbody>
+            </Table>
+          </Container>
+        )}
+        <Container p={0}>
+          <Calendar
+            onChange={setDate}
+            defaultValue={date}
+            tileDisabled={({ date }) =>
+              date < now ||
+              ((1 << date.getDay()) & availableDays) !== 1 << date.getDay()
+            }
+          />
+        </Container>
+        <Container p={4}>
+          <TimeList
+            selectedTime={selectedTime}
+            onChange={(time: any) => {
+              setselectedTime(time);
+            }}
+            times={availableTimes}
+            duration={durationMinutes}
+          />
+        </Container>
       </Flex>
       <Container pr={10} maxW="xs">
-        <Button onClick={() => setShowModal(true)}>Book</Button>
+        <Button onClick={() => setShowModal(true)}>Book meeting</Button>
       </Container>
       <ModalComponent showModal={showModal} closeModal={handleCloseModal}>
         <LoadingTransaction />

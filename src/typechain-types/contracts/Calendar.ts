@@ -26,55 +26,64 @@ import type {
   OnEvent,
 } from "../common";
 
-export type MeetingStruct = {
-  attendee: string;
-  startMinutes: BigNumberish;
-  durationMinutes: BigNumberish;
-};
+export declare namespace CalendarTypes {
+  export type TimeArrayStruct = { times: BigNumberish[]; timeZone: string };
 
-export type MeetingStructOutput = [string, number, number] & {
-  attendee: string;
-  startMinutes: number;
-  durationMinutes: number;
-};
+  export type TimeArrayStructOutput = [number[], string] & {
+    times: number[];
+    timeZone: string;
+  };
 
-export type ProfileStruct = {
-  description: string;
-  email: string;
-  picture: string;
-  url: string;
-  username: string;
-};
+  export type MeetingStruct = {
+    attendee: string;
+    startMinutes: BigNumberish;
+    durationMinutes: BigNumberish;
+  };
 
-export type ProfileStructOutput = [string, string, string, string, string] & {
-  description: string;
-  email: string;
-  picture: string;
-  url: string;
-  username: string;
-};
+  export type MeetingStructOutput = [string, number, number] & {
+    attendee: string;
+    startMinutes: number;
+    durationMinutes: number;
+  };
 
-export type AvailabilityStruct = {
-  location: string;
-  timeZone: string;
-  availableDays: BigNumberish;
-  earliestStartMinutes: BigNumberish;
-  minutesAvailable: BigNumberish;
-};
+  export type ProfileStruct = {
+    description: string;
+    email: string;
+    picture: string;
+    url: string;
+    username: string;
+  };
 
-export type AvailabilityStructOutput = [
-  string,
-  string,
-  number,
-  number,
-  number
-] & {
-  location: string;
-  timeZone: string;
-  availableDays: number;
-  earliestStartMinutes: number;
-  minutesAvailable: number;
-};
+  export type ProfileStructOutput = [string, string, string, string, string] & {
+    description: string;
+    email: string;
+    picture: string;
+    url: string;
+    username: string;
+  };
+
+  export type AvailabilityStruct = {
+    location: string;
+    timeZone: string;
+    availableDays: BigNumberish;
+    earliestStartMinutes: BigNumberish;
+    minutesAvailable: BigNumberish;
+  };
+
+  export type AvailabilityStructOutput = [
+    string,
+    string,
+    number,
+    number,
+    number
+  ] & {
+    location: string;
+    timeZone: string;
+    availableDays: number;
+    earliestStartMinutes: number;
+    minutesAvailable: number;
+  };
+}
 
 export interface CalendarInterface extends utils.Interface {
   functions: {
@@ -141,21 +150,25 @@ export interface CalendarInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "initialize",
-    values: [string, ProfileStruct, AvailabilityStruct]
+    values: [
+      string,
+      CalendarTypes.ProfileStruct,
+      CalendarTypes.AvailabilityStruct
+    ]
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "profile", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "setAvailability",
-    values: [AvailabilityStruct]
+    values: [CalendarTypes.AvailabilityStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "setProfile",
-    values: [ProfileStruct]
+    values: [CalendarTypes.ProfileStruct]
   ): string;
   encodeFunctionData(
     functionFragment: "setProfileAvailability",
-    values: [ProfileStruct, AvailabilityStruct]
+    values: [CalendarTypes.ProfileStruct, CalendarTypes.AvailabilityStruct]
   ): string;
 
   decodeFunctionResult(
@@ -323,19 +336,19 @@ export interface Calendar extends BaseContract {
       _day: BigNumberish,
       _duration: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[number[]]>;
+    ): Promise<[CalendarTypes.TimeArrayStructOutput]>;
 
     getMeetings(
       _year: BigNumberish,
       _month: BigNumberish,
       _day: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[MeetingStructOutput[]]>;
+    ): Promise<[CalendarTypes.MeetingStructOutput[]]>;
 
     initialize(
       _owner: string,
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -354,18 +367,18 @@ export interface Calendar extends BaseContract {
     >;
 
     setAvailability(
-      _availability: AvailabilityStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     setProfile(
-      _profile: ProfileStruct,
+      _profile: CalendarTypes.ProfileStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     setProfileAvailability(
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
   };
@@ -420,19 +433,19 @@ export interface Calendar extends BaseContract {
     _day: BigNumberish,
     _duration: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<number[]>;
+  ): Promise<CalendarTypes.TimeArrayStructOutput>;
 
   getMeetings(
     _year: BigNumberish,
     _month: BigNumberish,
     _day: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<MeetingStructOutput[]>;
+  ): Promise<CalendarTypes.MeetingStructOutput[]>;
 
   initialize(
     _owner: string,
-    _profile: ProfileStruct,
-    _availability: AvailabilityStruct,
+    _profile: CalendarTypes.ProfileStruct,
+    _availability: CalendarTypes.AvailabilityStruct,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -451,18 +464,18 @@ export interface Calendar extends BaseContract {
   >;
 
   setAvailability(
-    _availability: AvailabilityStruct,
+    _availability: CalendarTypes.AvailabilityStruct,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   setProfile(
-    _profile: ProfileStruct,
+    _profile: CalendarTypes.ProfileStruct,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   setProfileAvailability(
-    _profile: ProfileStruct,
-    _availability: AvailabilityStruct,
+    _profile: CalendarTypes.ProfileStruct,
+    _availability: CalendarTypes.AvailabilityStruct,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -517,19 +530,19 @@ export interface Calendar extends BaseContract {
       _day: BigNumberish,
       _duration: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<number[]>;
+    ): Promise<CalendarTypes.TimeArrayStructOutput>;
 
     getMeetings(
       _year: BigNumberish,
       _month: BigNumberish,
       _day: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<MeetingStructOutput[]>;
+    ): Promise<CalendarTypes.MeetingStructOutput[]>;
 
     initialize(
       _owner: string,
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -548,18 +561,18 @@ export interface Calendar extends BaseContract {
     >;
 
     setAvailability(
-      _availability: AvailabilityStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: CallOverrides
     ): Promise<void>;
 
     setProfile(
-      _profile: ProfileStruct,
+      _profile: CalendarTypes.ProfileStruct,
       overrides?: CallOverrides
     ): Promise<void>;
 
     setProfileAvailability(
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: CallOverrides
     ): Promise<void>;
   };
@@ -653,8 +666,8 @@ export interface Calendar extends BaseContract {
 
     initialize(
       _owner: string,
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -663,18 +676,18 @@ export interface Calendar extends BaseContract {
     profile(overrides?: CallOverrides): Promise<BigNumber>;
 
     setAvailability(
-      _availability: AvailabilityStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     setProfile(
-      _profile: ProfileStruct,
+      _profile: CalendarTypes.ProfileStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     setProfileAvailability(
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
   };
@@ -725,8 +738,8 @@ export interface Calendar extends BaseContract {
 
     initialize(
       _owner: string,
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -735,18 +748,18 @@ export interface Calendar extends BaseContract {
     profile(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     setAvailability(
-      _availability: AvailabilityStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     setProfile(
-      _profile: ProfileStruct,
+      _profile: CalendarTypes.ProfileStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     setProfileAvailability(
-      _profile: ProfileStruct,
-      _availability: AvailabilityStruct,
+      _profile: CalendarTypes.ProfileStruct,
+      _availability: CalendarTypes.AvailabilityStruct,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };
