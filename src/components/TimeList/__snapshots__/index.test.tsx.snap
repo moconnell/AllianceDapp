@@ -3,7 +3,7 @@
 exports[`<TimeList /> should render correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCYdqJ jFyvCC"
+    class="sc-eCYdqJ ilNZsE"
   >
     <div
       class="sc-jSMfEi Teyip"
@@ -98,7 +98,7 @@ exports[`<TimeList /> should render correctly 1`] = `
       </button>
     </div>
     <div
-      class="sc-hKMtZM ftvvFQ"
+      class="sc-hKMtZM evkSWm"
     >
       Times shown in local time
     </div>
@@ -109,7 +109,7 @@ exports[`<TimeList /> should render correctly 1`] = `
 exports[`<TimeList /> should render correctly 2`] = `
 <DocumentFragment>
   <div
-    class="sc-eCYdqJ jFyvCC"
+    class="sc-eCYdqJ ilNZsE"
   >
     <div
       class="sc-jSMfEi Teyip"
@@ -204,7 +204,7 @@ exports[`<TimeList /> should render correctly 2`] = `
       </button>
     </div>
     <div
-      class="sc-hKMtZM ftvvFQ"
+      class="sc-hKMtZM evkSWm"
     >
       Times shown in local time
     </div>
@@ -215,7 +215,7 @@ exports[`<TimeList /> should render correctly 2`] = `
 exports[`<TimeList /> should render correctly 3`] = `
 <DocumentFragment>
   <div
-    class="sc-eCYdqJ jFyvCC"
+    class="sc-eCYdqJ ilNZsE"
   >
     <div
       class="sc-jSMfEi Teyip"
@@ -315,7 +315,7 @@ exports[`<TimeList /> should render correctly 3`] = `
       </button>
     </div>
     <div
-      class="sc-hKMtZM ftvvFQ"
+      class="sc-hKMtZM evkSWm"
     >
       Times shown in local time
     </div>

@@ -6,11 +6,11 @@ exports[`<Book /> should render correctly 1`] = `
     class="chakra-container css-122pq3t"
     data-testid="container:book"
   >
-    <h2
-      class="chakra-heading css-147w9li"
+    <h1
+      class="chakra-heading css-1lg6lob"
     >
       Book a 60 minute meeting with mr_bojangles...
-    </h2>
+    </h1>
     <div
       class="css-b82b48"
     >
@@ -92,6 +92,7 @@ exports[`<Book /> should render correctly 1`] = `
     >
       <button
         class="chakra-button css-5c2176"
+        disabled=""
         type="button"
       >
         Book meeting
