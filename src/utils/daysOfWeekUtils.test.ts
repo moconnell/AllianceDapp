@@ -1,6 +1,6 @@
 import DayOfWeek from "../types/dayOfWeek";
 import DaysOfWeek from "../types/daysOfWeek";
-import { toDaysOfWeek } from "./daysOfWeekUtils";
+import { isAvailable, toDaysOfWeek } from "./daysOfWeekUtils";
 
 describe("toDaysOfWeek", () => {
   const testData = [
@@ -16,6 +16,32 @@ describe("toDaysOfWeek", () => {
   testData.forEach(({ input, expected }) => {
     it(`should convert ${DayOfWeek[input]}`, () => {
       expect(toDaysOfWeek(input)).toStrictEqual(expected);
+    });
+  });
+});
+
+describe("isAvailable", () => {
+  const testData = [
+    {
+      date: new Date(Date.parse("2022-05-08")),
+      availableDays: DaysOfWeek.MonFri,
+      expected: false,
+    },
+    {
+      date: new Date(Date.parse("2022-05-09")),
+      availableDays: DaysOfWeek.MonFri,
+      expected: true,
+    },
+    {
+      date: new Date(Date.parse("2022-05-10")),
+      availableDays: DaysOfWeek.Tuesday,
+      expected: true,
+    },
+  ];
+
+  testData.forEach(({ date, availableDays, expected }) => {
+    it(`should return ${expected} for ${date} and ${availableDays}`, () => {
+      expect(isAvailable(date, availableDays)).toStrictEqual(expected);
     });
   });
 });

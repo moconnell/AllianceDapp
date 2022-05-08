@@ -38,7 +38,7 @@ exports[`<Book /> should render correctly 1`] = `
                 class="css-17arw3k"
                 role="gridcell"
               >
-                Zurich
+                London
               </td>
             </tr>
             <tr
@@ -54,7 +54,7 @@ exports[`<Book /> should render correctly 1`] = `
                 class="css-17arw3k"
                 role="gridcell"
               >
-                Europe/Zurich
+                Europe/London
               </td>
             </tr>
             <tr

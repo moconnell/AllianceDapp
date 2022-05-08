@@ -19,6 +19,7 @@ import { tomorrow } from "../../utils/timeUtils";
 import ModalComponent from "../../components/Modal";
 import LoadingTransaction from "../../components/Modal/components/LoadingTransaction";
 import TimeList from "../../components/TimeList";
+import { isAvailable } from "../../utils/daysOfWeekUtils";
 
 const Book = () => {
   const { calendarAddress } = useParams();
@@ -38,23 +39,17 @@ const Book = () => {
   useEffect(() => {
     const loadProfileAvailability = async () => {
       if (!calendarAddress) return;
-      try {
-        const profileAvailability = await getProfileAvailability(
-          calendarAddress
-        );
-        if (profileAvailability) {
-          const [
-            { username, description },
-            { availableDays, location, timeZone },
-          ] = profileAvailability;
-          if (availableDays) setAvailableDays(availableDays);
-          if (location) setLocation(location);
-          if (timeZone) setTimeZone(timeZone);
-          if (username) setUsername(username);
-          if (description) setDescription(description);
-        }
-      } catch (error) {
-        console.error(error);
+      const profileAvailability = await getProfileAvailability(calendarAddress);
+      if (profileAvailability) {
+        const [
+          { username, description },
+          { availableDays, location, timeZone },
+        ] = profileAvailability;
+        if (availableDays) setAvailableDays(availableDays);
+        if (location) setLocation(location);
+        if (timeZone) setTimeZone(timeZone);
+        if (username) setUsername(username);
+        if (description) setDescription(description);
       }
     };
 
@@ -64,17 +59,13 @@ const Book = () => {
   useEffect(() => {
     const loadTimes = async () => {
       if (!calendarAddress) return;
-      try {
-        const availableTimes_ = await getAvailableTimes(
-          calendarAddress,
-          date,
-          durationMinutes
-        );
-        if (availableTimes_) {
-          setAvailableTimes(availableTimes_);
-        }
-      } catch (error) {
-        console.error(error);
+      const availableTimes_ = await getAvailableTimes(
+        calendarAddress,
+        date,
+        durationMinutes
+      );
+      if (availableTimes_) {
+        setAvailableTimes(availableTimes_);
       }
     };
 
@@ -86,7 +77,7 @@ const Book = () => {
   }
 
   return (
-    <Container data-testId="container:book" maxW="container.xl" p={1}>
+    <Container data-testid="container:book" maxW="container.xl" p={1}>
       <Heading color="raid.100" fontFamily="Inter">
         Book a {durationMinutes} minute meeting{username && ` with ${username}`}
         ...
@@ -97,7 +88,7 @@ const Book = () => {
         direction={{ base: "column", md: "row" }}
       >
         {(location || timeZone || description) && (
-          <Container data-testId="container:profile" paddingTop="24">
+          <Container data-testid="container:profile" paddingTop="24">
             <Table>
               <Tbody fontFamily="Inter">
                 {location && (
@@ -139,17 +130,14 @@ const Book = () => {
             onChange={setDate}
             defaultValue={date}
             tileDisabled={(date) =>
-              date < now ||
-              ((1 << date.getDay()) & availableDays) !== 1 << date.getDay()
+              date < now || !isAvailable(date, availableDays)
             }
           />
         </Container>
         <Container p={4}>
           <TimeList
             selectedTime={selectedTime}
-            onChange={(time: any) => {
-              setSelectedTime(time);
-            }}
+            onChange={setSelectedTime}
             times={availableTimes}
             duration={durationMinutes}
           />

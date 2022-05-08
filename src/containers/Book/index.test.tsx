@@ -10,10 +10,13 @@ import ProfileInfo from "../../types/profileInfo";
 import Book from "./index";
 
 jest.mock("../../hooks");
-jest.mock( "../../components/Calendar", () => () => "((Calendar))");
-jest.mock( "../../components/Modal", () => () => "((ModalComponent))");
-jest.mock( "../../components/Modal/components/LoadingTransaction", () => () => "((LoadingTransaction))");
-jest.mock( "../../components/TimeList", () => () => "((TimeList))");
+jest.mock("../../components/Calendar", () => () => "((Calendar))");
+jest.mock("../../components/Modal", () => () => "((ModalComponent))");
+jest.mock(
+  "../../components/Modal/components/LoadingTransaction",
+  () => () => "((LoadingTransaction))"
+);
+jest.mock("../../components/TimeList", () => () => "((TimeList))");
 
 describe("<Book />", () => {
   const mockGetProfileAvailability = jest.fn();
@@ -31,7 +34,7 @@ describe("<Book />", () => {
     });
 
     mockGetProfileAvailability.mockImplementation(() => {
-      const timeZone = DateTime.now().zoneName;
+      const timeZone = "Europe/London";
       const location = timeZone.split("/")[1];
       const profileAvailability: [ProfileInfo, AvailabilityInfo] = [
         { username: "mr_bojangles", description: "legend" },
@@ -60,7 +63,9 @@ describe("<Book />", () => {
       </Router>
     );
 
-    await waitFor(() => expect(getByTestId("container:profile")).toBeInTheDocument())
+    await waitFor(() =>
+      expect(getByTestId("container:profile")).toBeInTheDocument()
+    );
 
     expect(asFragment()).toMatchSnapshot();
   });
