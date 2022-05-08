@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
-import Calendar from "react-calendar";
+import Calendar from "../../components/Calendar";
 import { useParams } from "react-router-dom";
 import { useCalendar } from "../../hooks";
 import DaysOfWeek from "../../types/daysOfWeek";
@@ -23,7 +23,7 @@ import TimeList from "../../components/TimeList";
 const Book = () => {
   const { calendarAddress } = useParams();
   const { getProfileAvailability, getAvailableTimes } = useCalendar();
-  const [selectedTime, setselectedTime] = useState<DateTime | undefined>();
+  const [selectedTime, setSelectedTime] = useState<DateTime | undefined>();
   const [availableDays, setAvailableDays] = useState(DaysOfWeek.None);
   const [availableTimes, setAvailableTimes] = useState([] as DateTime[]);
   const [description, setDescription] = useState("");
@@ -38,17 +38,23 @@ const Book = () => {
   useEffect(() => {
     const loadProfileAvailability = async () => {
       if (!calendarAddress) return;
-      const pa = await getProfileAvailability(calendarAddress);
-      if (pa) {
-        const [
-          { username, description },
-          { availableDays, location, timeZone },
-        ] = pa;
-        if (availableDays) setAvailableDays(availableDays);
-        if (location) setLocation(location);
-        if (timeZone) setTimeZone(timeZone);
-        if (username) setUsername(username);
-        if (description) setDescription(description);
+      try {
+        const profileAvailability = await getProfileAvailability(
+          calendarAddress
+        );
+        if (profileAvailability) {
+          const [
+            { username, description },
+            { availableDays, location, timeZone },
+          ] = profileAvailability;
+          if (availableDays) setAvailableDays(availableDays);
+          if (location) setLocation(location);
+          if (timeZone) setTimeZone(timeZone);
+          if (username) setUsername(username);
+          if (description) setDescription(description);
+        }
+      } catch (error) {
+        console.error(error);
       }
     };
 
@@ -58,14 +64,17 @@ const Book = () => {
   useEffect(() => {
     const loadTimes = async () => {
       if (!calendarAddress) return;
-      const availableTimes_ = await getAvailableTimes(
-        calendarAddress,
-        date,
-        durationMinutes
-      );
-      if (availableTimes_) {
-        console.log(availableTimes_);
-        setAvailableTimes(availableTimes_);
+      try {
+        const availableTimes_ = await getAvailableTimes(
+          calendarAddress,
+          date,
+          durationMinutes
+        );
+        if (availableTimes_) {
+          setAvailableTimes(availableTimes_);
+        }
+      } catch (error) {
+        console.error(error);
       }
     };
 
@@ -77,7 +86,7 @@ const Book = () => {
   }
 
   return (
-    <Container maxW="container.xl" p={1}>
+    <Container data-testId="container:book" maxW="container.xl" p={1}>
       <Heading color="raid.100" fontFamily="Inter">
         Book a {durationMinutes} minute meeting{username && ` with ${username}`}
         ...
@@ -88,7 +97,7 @@ const Book = () => {
         direction={{ base: "column", md: "row" }}
       >
         {(location || timeZone || description) && (
-          <Container paddingTop="24">
+          <Container data-testId="container:profile" paddingTop="24">
             <Table>
               <Tbody fontFamily="Inter">
                 {location && (
@@ -129,7 +138,7 @@ const Book = () => {
           <Calendar
             onChange={setDate}
             defaultValue={date}
-            tileDisabled={({ date }) =>
+            tileDisabled={(date) =>
               date < now ||
               ((1 << date.getDay()) & availableDays) !== 1 << date.getDay()
             }
@@ -139,7 +148,7 @@ const Book = () => {
           <TimeList
             selectedTime={selectedTime}
             onChange={(time: any) => {
-              setselectedTime(time);
+              setSelectedTime(time);
             }}
             times={availableTimes}
             duration={durationMinutes}

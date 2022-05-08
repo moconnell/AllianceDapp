@@ -4,6 +4,7 @@ import Meetings from "./index";
 import { useCalendar } from "../../hooks";
 
 jest.mock("../../hooks");
+jest.mock( "../../components/Calendar", () => () => "((Calendar))");
 
 describe("<Meetings />", () => {
   const mockGetMeetings = jest.fn();

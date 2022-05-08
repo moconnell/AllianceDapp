@@ -186,12 +186,12 @@ export const useCalendar = () => {
         web3Provider
       );
 
-      const pa: [ProfileInfo, AvailabilityInfo] = [
+      const profileAvailability: [ProfileInfo, AvailabilityInfo] = [
         await otherCalendar.profile(),
         await otherCalendar.availability(),
       ];
 
-      return pa;
+      return profileAvailability;
     },
     [web3Provider]
   );

@@ -1,15 +1,19 @@
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { DateTime } from "luxon";
-import { Router } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import DaysOfWeek from "../../types/daysOfWeek";
 import { range } from "../../utils/range";
 import { useCalendar } from "../../hooks";
+import AvailabilityInfo from "../../types/availabilityInfo";
+import ProfileInfo from "../../types/profileInfo";
 import Book from "./index";
 
-const SYDNEY = "Australia/Sydney";
-
 jest.mock("../../hooks");
+jest.mock( "../../components/Calendar", () => () => "((Calendar))");
+jest.mock( "../../components/Modal", () => () => "((ModalComponent))");
+jest.mock( "../../components/Modal/components/LoadingTransaction", () => () => "((LoadingTransaction))");
+jest.mock( "../../components/TimeList", () => () => "((TimeList))");
 
 describe("<Book />", () => {
   const mockGetProfileAvailability = jest.fn();
@@ -27,30 +31,37 @@ describe("<Book />", () => {
     });
 
     mockGetProfileAvailability.mockImplementation(() => {
-      return {
-        profile: { username: "mr_bojangles", description: "legend" },
-        availability: {
-          location: "Sydney",
-          timeZone: SYDNEY,
+      const timeZone = DateTime.now().zoneName;
+      const location = timeZone.split("/")[1];
+      const profileAvailability: [ProfileInfo, AvailabilityInfo] = [
+        { username: "mr_bojangles", description: "legend" },
+        {
+          location,
+          timeZone,
           availableDays: DaysOfWeek.MonFri,
         },
-      };
+      ];
+
+      return Promise.resolve(profileAvailability);
     });
 
-    mockGetAvailableTimes.mockImplementation(() => {
-      return range(9, 14).map((hour) =>
-        DateTime.fromObject({ hour }).setZone(SYDNEY)
-      );
-    });
+    mockGetAvailableTimes.mockResolvedValue(
+      range(9, 14).map((hour) => DateTime.fromObject({ hour }))
+    );
 
     const history = createMemoryHistory();
-    history.push("book/0x23dB4a08f2272df049a4932a4Cc3A6Dc1002B33E");
+    history.push("/book/0x23dB4a08f2272df049a4932a4Cc3A6Dc1002B33E");
 
-    const { asFragment } = render(
+    const { asFragment, getByTestId } = render(
       <Router location={history.location} navigator={history}>
-        <Book />
+        <Routes>
+          <Route path="/book/:calendarAddress" element={<Book />} />
+        </Routes>
       </Router>
     );
+
+    await waitFor(() => expect(getByTestId("container:profile")).toBeInTheDocument())
+
     expect(asFragment()).toMatchSnapshot();
   });
 });
