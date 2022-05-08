@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Table,
+  Text,
   Tbody,
   Td,
   Th,
@@ -21,10 +22,21 @@ import LoadingTransaction from "../../components/Modal/components/LoadingTransac
 import TimeList from "../../components/TimeList";
 import { isAvailable } from "../../utils/daysOfWeekUtils";
 
+enum BookingState {
+  None,
+  Requested,
+  InProgress,
+  Complete,
+  Error,
+}
+
 const Book = () => {
   const { calendarAddress } = useParams();
-  const { getProfileAvailability, getAvailableTimes } = useCalendar();
+  const { bookMeeting, calendar, getProfileAvailability, getAvailableTimes } =
+    useCalendar();
+  const [selectedDate, setSelectedDate] = useState(tomorrow());
   const [selectedTime, setSelectedTime] = useState<DateTime | undefined>();
+  const [durationMinutes] = useState(60);
   const [availableDays, setAvailableDays] = useState(DaysOfWeek.None);
   const [availableTimes, setAvailableTimes] = useState([] as DateTime[]);
   const [description, setDescription] = useState("");
@@ -32,8 +44,7 @@ const Book = () => {
   const [timeZone, setTimeZone] = useState("");
   const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [date, setDate] = useState(tomorrow());
-  const [durationMinutes] = useState(60);
+  const [bookingState, setBookingState] = useState(BookingState.None);
   const now = new Date();
 
   useEffect(() => {
@@ -61,7 +72,7 @@ const Book = () => {
       if (!calendarAddress) return;
       const availableTimes_ = await getAvailableTimes(
         calendarAddress,
-        date,
+        selectedDate,
         durationMinutes
       );
       if (availableTimes_) {
@@ -70,87 +81,176 @@ const Book = () => {
     };
 
     loadTimes();
-  }, [calendarAddress, date, durationMinutes, getAvailableTimes]);
+  }, [calendarAddress, selectedDate, durationMinutes, getAvailableTimes]);
+
+  useEffect(() => {
+    const doBooking = async () => {
+      if (
+        bookingState === BookingState.Requested &&
+        calendarAddress &&
+        selectedTime &&
+        durationMinutes
+      ) {
+        try {
+          await bookMeeting(calendarAddress, selectedTime, durationMinutes);
+          setBookingState(BookingState.Complete);
+        } catch (error) {
+          console.error(error);
+          setBookingState(BookingState.Error);
+        }
+      }
+    };
+
+    doBooking();
+  }, [
+    bookMeeting,
+    bookingState,
+    calendarAddress,
+    selectedTime,
+    durationMinutes,
+  ]);
 
   function handleCloseModal() {
     setShowModal(false);
   }
 
-  return (
-    <Container data-testid="container:book" maxW="container.xl" p={1}>
-      <Heading color="raid.100" fontFamily="Inter">
-        Book a {durationMinutes} minute meeting{username && ` with ${username}`}
-        ...
-      </Heading>
-      <Flex
-        h={{ base: "auto", md: "100%" }}
-        py={10}
-        direction={{ base: "column", md: "row" }}
-      >
-        {(location || timeZone || description) && (
-          <Container data-testid="container:profile" paddingTop="24">
-            <Table>
-              <Tbody fontFamily="Inter">
-                {location && (
-                  <Tr>
-                    <Th border={0} color="gray.500">
-                      Location
-                    </Th>
-                    <Td border={0} color="gray.300" fontSize="sm">
-                      {location}
-                    </Td>
-                  </Tr>
-                )}
-                {timeZone && (
-                  <Tr>
-                    <Th border={0} color="gray.500">
-                      Time-Zone
-                    </Th>
-                    <Td border={0} color="gray.300" fontSize="sm">
-                      {timeZone}
-                    </Td>
-                  </Tr>
-                )}
-                {description && (
-                  <Tr>
-                    <Th border={0} color="gray.500">
-                      About
-                    </Th>
-                    <Td border={0} color="gray.300" fontSize="sm">
-                      {description}
-                    </Td>
-                  </Tr>
-                )}
-              </Tbody>
-            </Table>
-          </Container>
-        )}
-        <Container p={0}>
-          <Calendar
-            onChange={setDate}
-            defaultValue={date}
-            tileDisabled={(date) =>
-              date < now || !isAvailable(date, availableDays)
-            }
-          />
-        </Container>
-        <Container p={4}>
-          <TimeList
-            selectedTime={selectedTime}
-            onChange={setSelectedTime}
-            times={availableTimes}
-            duration={durationMinutes}
-          />
-        </Container>
-      </Flex>
-      <Container pr={10} maxW="xs">
-        <Button onClick={() => setShowModal(true)}>Book meeting</Button>
+  if (!calendarAddress || !durationMinutes)
+    return (
+      <Container data-testid="container:book" maxW="container.xl" p={1}>
+        <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
+          Hmm...
+        </Heading>
+        <Text fontFamily="Inter" color="#fff">
+          That looks like an invalid link - please check and try again!
+        </Text>
       </Container>
-      <ModalComponent showModal={showModal} closeModal={handleCloseModal}>
-        <LoadingTransaction />
-      </ModalComponent>
-    </Container>
-  );
+    );
+
+  if (calendar?.address === calendarAddress)
+    return (
+      <Container data-testid="container:book" maxW="container.xl" p={1}>
+        <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
+          Hey, that's your address!
+        </Heading>
+        <Text fontFamily="Inter" color="#fff">
+          Did you really want to book a meeting with yourself?
+        </Text>
+      </Container>
+    );
+
+  switch (bookingState) {
+    case BookingState.Complete:
+      return (
+        <Container data-testid="container:book" maxW="container.xl" p={1}>
+          <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
+            Success!
+          </Heading>
+          <Text fontFamily="Inter" color="#fff">
+            {`Your ${durationMinutes} minute meeting with ${username} is all
+              booked for ${selectedTime
+                ?.toLocal()
+                .toLocaleString({ dateStyle: "full", timeStyle: "short" })}.`}
+          </Text>
+        </Container>
+      );
+    case BookingState.Error:
+      return (
+        <Container data-testid="container:book" maxW="container.xl" p={1}>
+          <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
+            Uh oh...
+          </Heading>
+          <Text fontFamily="Inter" color="#fff">
+            It looks like something went wrong :\
+          </Text>
+        </Container>
+      );
+    default:
+      return (
+        <Container data-testid="container:book" maxW="container.xl" p={1}>
+          <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
+            Book a {durationMinutes} minute meeting
+            {username && ` with ${username}`}
+            ...
+          </Heading>
+          <Flex
+            h={{ base: "auto", md: "100%" }}
+            py={10}
+            direction={{ base: "column", md: "row" }}
+          >
+            {(location || timeZone || description) && (
+              <Container data-testid="container:profile" paddingTop="24">
+                <Table>
+                  <Tbody fontFamily="Inter">
+                    {location && (
+                      <Tr>
+                        <Th border={0} color="gray.500">
+                          Location
+                        </Th>
+                        <Td border={0} color="gray.300" fontSize="sm">
+                          {location}
+                        </Td>
+                      </Tr>
+                    )}
+                    {timeZone && (
+                      <Tr>
+                        <Th border={0} color="gray.500">
+                          Time-Zone
+                        </Th>
+                        <Td border={0} color="gray.300" fontSize="sm">
+                          {timeZone}
+                        </Td>
+                      </Tr>
+                    )}
+                    {description && (
+                      <Tr>
+                        <Th border={0} color="gray.500">
+                          About
+                        </Th>
+                        <Td border={0} color="gray.300" fontSize="sm">
+                          {description}
+                        </Td>
+                      </Tr>
+                    )}
+                  </Tbody>
+                </Table>
+              </Container>
+            )}
+            <Container p={0}>
+              <Calendar
+                onChange={setSelectedDate}
+                defaultValue={selectedDate}
+                tileDisabled={(date) =>
+                  date < now || !isAvailable(date, availableDays)
+                }
+              />
+            </Container>
+            <Container p={4}>
+              <TimeList
+                selectedTime={selectedTime}
+                onChange={setSelectedTime}
+                times={availableTimes}
+                duration={durationMinutes}
+              />
+            </Container>
+          </Flex>
+          <Container pr={10} maxW="xs">
+            <Button
+              disabled={
+                !selectedDate ||
+                !selectedTime ||
+                bookingState !== BookingState.None
+              }
+              onClick={() => setBookingState(BookingState.Requested)}
+            >
+              Book meeting
+            </Button>
+          </Container>
+          <ModalComponent showModal={showModal} closeModal={handleCloseModal}>
+            <LoadingTransaction />
+          </ModalComponent>
+        </Container>
+      );
+  }
 };
 
 export default Book;

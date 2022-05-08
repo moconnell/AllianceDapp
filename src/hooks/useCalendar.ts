@@ -234,6 +234,28 @@ export const useCalendar = () => {
     [web3Provider]
   );
 
+  const bookMeeting = useCallback(
+    async (calendarAddress: string, at: DateTime, durationMinutes: number) => {
+      if (!signer) return;
+
+      console.log(
+        `bookMeeting(calendarAddress: ${calendarAddress}, at: ${at}, duration: ${durationMinutes})`
+      );
+
+      const otherCalendar = Calendar__factory.connect(calendarAddress, signer);
+
+      await otherCalendar.bookMeeting(
+        at.year,
+        at.month,
+        at.day,
+        at.hour,
+        at.minute,
+        durationMinutes
+      );
+    },
+    [signer]
+  );
+
   const setProfileAvailability = (info: ProfileInfo & AvailabilityInfo) => {
     setProfile(info);
     setAvailability(info);
@@ -241,6 +263,7 @@ export const useCalendar = () => {
 
   return {
     availability,
+    bookMeeting,
     calendar,
     getAvailableTimes,
     getMeetings,

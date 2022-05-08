@@ -72,7 +72,6 @@ export const SubText = styled.div`
   font-size: 0.8em;
   line-height: 1em;
   display: flex;
-  justify-content: center;
   align-items: center;
   color: #ffffff;
   margin: 1.1em 0 0 0;
@@ -82,10 +81,9 @@ export const Container = styled.div`
   padding: 0 5px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 350px;
-  max-height: 350px;
+  height: 400px;
+  max-height: 400px;
   max-width: 250px;
 `;
 
