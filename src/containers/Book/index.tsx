@@ -97,9 +97,10 @@ const Book = () => {
           setBookingState(BookingState.Complete);
         } catch (error) {
           toast({
+            id: "booking-error",
             status: "error",
-            title: "Booking failed",
-            description: <Fragment>{String(error)}</Fragment>,
+            title: "Booking Error",
+            description: String(error),
             duration: 10,
             isClosable: true,
           });
@@ -136,7 +137,11 @@ const Book = () => {
 
   if (address === calendarAddress)
     return (
-      <Container data-testid="container:invalid-calendar" maxW="container.xl" p={1}>
+      <Container
+        data-testid="container:invalid-calendar"
+        maxW="container.xl"
+        p={1}
+      >
         <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
           Hey, that's you!
         </Heading>
@@ -149,7 +154,11 @@ const Book = () => {
   switch (bookingState) {
     case BookingState.Complete:
       return (
-        <Container data-testid="container:book" maxW="container.xl" p={1}>
+        <Container
+          data-testid="container:booking-complete"
+          maxW="container.xl"
+          p={1}
+        >
           <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
             Success!
           </Heading>
@@ -232,6 +241,7 @@ const Book = () => {
           </Flex>
           <Container pr={10} maxW="xs">
             <Button
+              data-testid="button:book-meeting"
               disabled={
                 !selectedDate ||
                 !selectedTime ||

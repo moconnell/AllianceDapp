@@ -1,15 +1,10 @@
 import { fireEvent, render } from "@testing-library/react";
 import { DateTime } from "luxon";
-import { range } from "../../utils/range";
+import { dateTimeRange } from "src/testUtils";
 import TimeList from "./index";
 
 describe("<TimeList />", () => {
-  const mockTimes = range(9, 14).flatMap((hour) =>
-    range(0, 1).map((i) =>
-      DateTime.fromObject({ hour, minute: i * 30 }).setLocale("en-us")
-    )
-  );
-
+  const mockTimes = dateTimeRange(9, 14, 30);
   const testData = [
     {},
     { selectedTime: mockTimes[0] },
@@ -38,9 +33,7 @@ describe("<TimeList />", () => {
 
     fireEvent.click(getByText("10:30 AM"));
 
-    expect(mockHandler).toBeCalledWith(
-      DateTime.fromObject({ hour: 10, minute: 30 }).setLocale("en-us")
-    );
+    expect(mockHandler).toBeCalledWith(mockTimes[3]);
   });
 
   it("should ignore click when no onChange handler", async () => {
