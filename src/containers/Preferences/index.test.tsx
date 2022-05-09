@@ -2,7 +2,6 @@ import { render } from "@testing-library/react";
 import Preferences from "./index";
 import { createMemoryHistory } from "history";
 import { useCalendar } from "../../hooks";
-import { useWeb3Context } from "../../context/Web3Context";
 import { Router, Route, Routes } from "react-router-dom";
 import { Fragment } from "react";
 import { web3InitialState } from "../../reducers";
@@ -21,7 +20,6 @@ jest.mock("react-hook-form", () => {
   };
 });
 jest.mock("../../hooks");
-jest.mock("../../context/Web3Context");
 jest.mock("../../components/Input", () => () => MOCK_INPUT);
 
 describe("<Preferences />", () => {
@@ -30,32 +28,29 @@ describe("<Preferences />", () => {
   afterEach(() => jest.resetAllMocks());
   afterAll(() => jest.restoreAllMocks());
 
-  const testData = [
-    {
-      name: "render correctly",
-      web3ProviderState: { ...web3InitialState, address: "0x0123498712309487" },
-      expectedRoute: PROFILE_PATH,
-    },
-    {
-      name: "redirect to home page",
-      web3ProviderState: web3InitialState,
-      expectedRoute: ROOT_PATH,
-    },
+  const testData: [string, string, string?][] = [
+    [
+       "render correctly",
+       PROFILE_PATH,
+       "0xB7A5bd0345EF1Cc5E66bf61BdeC17D2461fBd968",
+    ],
+    [
+       "redirect to home page",
+       ROOT_PATH,
+    ],
   ];
 
-  testData.forEach(({ name, web3ProviderState, expectedRoute }) =>
+  testData.forEach(([ name, expectedRoute, address ]) =>
     it(`should ${name}`, () => {
       (useCalendar as jest.Mock).mockImplementation(() => {
         return {
+          address,
           availablility: {},
           profile: {},
           setProfileAvailability: mockSetProfileAvailability,
         };
       });
-      (useWeb3Context as jest.Mock).mockImplementation(() => {
-        return web3ProviderState;
-      });
-
+      
       const history = createMemoryHistory();
       history.push(PROFILE_PATH);
 

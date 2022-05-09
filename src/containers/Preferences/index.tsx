@@ -2,7 +2,6 @@ import { useEffect, useMemo } from "react";
 import { Navigate } from "react-router-dom";
 import { FormProvider, useForm } from "react-hook-form";
 import Input from "../../components/Input";
-import { useWeb3Context } from "../../context/Web3Context";
 import { useCalendar } from "../../hooks";
 import DaysOfWeek from "../../types/daysOfWeek";
 import Time from "../../types/time";
@@ -10,8 +9,7 @@ import ProfileInfo from "../../types/profileInfo";
 import AvailabilityInfo from "../../types/availabilityInfo";
 
 const Preferences = () => {
-  const { availability, profile, setProfileAvailability } = useCalendar();
-  const { address } = useWeb3Context();
+  const { address, availability, profile, setProfileAvailability } = useCalendar();
 
   const defaultValues = useMemo(() => {
     const defaultValues = { ...profile, ...availability };
@@ -42,14 +40,9 @@ const Preferences = () => {
     return <Navigate to="/" />;
   }
 
-  const onValid = (info: ProfileInfo & AvailabilityInfo) => {
-    console.log("setProfileAvailability...");
-    setProfileAvailability(info);
-  };
-
   return (
     <FormProvider {...methods}>
-      <form aria-label="form" onSubmit={handleSubmit(onValid)}>
+      <form aria-label="form" onSubmit={handleSubmit(setProfileAvailability)}>
         <Input />
       </form>
     </FormProvider>

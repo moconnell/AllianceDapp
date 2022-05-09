@@ -13,33 +13,22 @@ jest.mock("../../components/Web3Button", () => () => "((Web3Button))");
 jest.mock("../../typechain-types");
 
 describe("<Home />", () => {
-  const testData = [
-    {
-      name: "redirect to meetings page",
-      calendar: { } as Calendar,
-    },
-    {
-      name: "redirect to profile page",
-      address: "0x12903412938749018",
-    },
-    {
-      name: "render correctly",
-    },
+  const testData: [string, boolean?, string?][] = [
+    ["redirect to meetings page", true],
+    ["redirect to profile page", false, "0xB7A5bd0345EF1Cc5E66bf61BdeC17D2461fBd968"],
+    ["render correctly"],
   ];
 
   beforeEach(() => jest.resetAllMocks());
   afterAll(() => jest.restoreAllMocks());
 
-  testData.forEach(({ name, calendar, address }) => {
+  testData.forEach(([name, hasCalendar = false, address]) => {
     it(`should ${name}`, async () => {
       (useCalendar as jest.Mock).mockImplementation(() => {
         return {
-          calendar: calendar,
+          address,
+          hasCalendar,
         };
-      });
-
-      (useWeb3Context as jest.Mock).mockImplementation(() => {
-        return { ...web3InitialState, address };
       });
 
       const { asFragment } = render(

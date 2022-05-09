@@ -11,13 +11,11 @@ import { ReactComponent as Alliance } from "../../assets/alliance.svg";
 import { useCalendar } from "../../hooks";
 import { Navigate } from "react-router-dom";
 import Web3Button from "../../components/Web3Button";
-import { useWeb3Context } from "../../context/Web3Context";
 
 const Home = () => {
-  const { calendar } = useCalendar();
-  const { address } = useWeb3Context();
+  const { address, hasCalendar } = useCalendar();
 
-  if (calendar) return <Navigate to="/meetings" />;
+  if (hasCalendar) return <Navigate to="/meetings" />;
   if (address) return <Navigate to="/profile" />;
 
   return (

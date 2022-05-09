@@ -38,7 +38,7 @@ exports[`<Book /> should render correctly 1`] = `
                 class="css-17arw3k"
                 role="gridcell"
               >
-                London
+                The Big Smoke
               </td>
             </tr>
             <tr
@@ -99,6 +99,46 @@ exports[`<Book /> should render correctly 1`] = `
       </button>
     </div>
     ((ModalComponent))
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Book /> should render invalid calendar error 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-container css-122pq3t"
+    data-testid="container:invalid-calendar"
+  >
+    <h1
+      class="chakra-heading css-1lg6lob"
+    >
+      Hey, that's you!
+    </h1>
+    <p
+      class="chakra-text css-170nc93"
+    >
+      Did you really want to book a meeting with yourself?
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<Book /> should render invalid url error 1`] = `
+<DocumentFragment>
+  <div
+    class="chakra-container css-122pq3t"
+    data-testid="container:invalid-url"
+  >
+    <h1
+      class="chakra-heading css-1lg6lob"
+    >
+      Hmm...
+    </h1>
+    <p
+      class="chakra-text css-170nc93"
+    >
+      That looks like an invalid link - please check and try again!
+    </p>
   </div>
 </DocumentFragment>
 `;

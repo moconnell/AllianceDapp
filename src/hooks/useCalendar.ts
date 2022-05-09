@@ -277,12 +277,13 @@ export const useCalendar = () => {
   };
 
   return {
+    address,
     availability,
     bookMeeting,
-    calendar,
     getAvailableTimes,
     getMeetings,
     getProfileAvailability,
+    hasCalendar: calendar !== undefined,
     profile,
     setProfileAvailability,
   };

@@ -8,7 +8,7 @@ import { Container, Content } from "./styles";
 import { Flex } from "@chakra-ui/react";
 
 const Meetings = () => {
-  const { calendar, getMeetings } = useCalendar();
+  const { getMeetings } = useCalendar();
   const [meetings, setMeetings] = useState([] as Meeting[]);
   const [date, setDate] = useState(new Date());
 
@@ -23,9 +23,9 @@ const Meetings = () => {
     }
 
     loadMeetings();
-  }, [calendar, date, getMeetings]);
+  }, [date, getMeetings]);
 
-  // if (!calendar) return <Navigate to="/" />;
+  // if (!hasCalendar) return <Navigate to="/" />;
 
   return (
     <Container>

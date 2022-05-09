@@ -9,9 +9,10 @@ import {
   Td,
   Th,
   Tr,
+  useToast,
 } from "@chakra-ui/react";
 import { DateTime } from "luxon";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Calendar from "../../components/Calendar";
 import { useParams } from "react-router-dom";
 import { useCalendar } from "../../hooks";
@@ -27,12 +28,11 @@ enum BookingState {
   Requested,
   InProgress,
   Complete,
-  Error,
 }
 
 const Book = () => {
   const { calendarAddress } = useParams();
-  const { bookMeeting, calendar, getProfileAvailability, getAvailableTimes } =
+  const { address, bookMeeting, getProfileAvailability, getAvailableTimes } =
     useCalendar();
   const [selectedDate, setSelectedDate] = useState(tomorrow());
   const [selectedTime, setSelectedTime] = useState<DateTime | undefined>();
@@ -45,6 +45,7 @@ const Book = () => {
   const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [bookingState, setBookingState] = useState(BookingState.None);
+  const toast = useToast();
   const now = new Date();
 
   useEffect(() => {
@@ -95,8 +96,14 @@ const Book = () => {
           await bookMeeting(calendarAddress, selectedTime, durationMinutes);
           setBookingState(BookingState.Complete);
         } catch (error) {
-          console.error(error);
-          setBookingState(BookingState.Error);
+          toast({
+            status: "error",
+            title: "Booking failed",
+            description: <Fragment>{String(error)}</Fragment>,
+            duration: 10,
+            isClosable: true,
+          });
+          setBookingState(BookingState.None);
         }
       }
     };
@@ -108,15 +115,16 @@ const Book = () => {
     calendarAddress,
     selectedTime,
     durationMinutes,
+    toast,
   ]);
 
   function handleCloseModal() {
     setShowModal(false);
   }
 
-  if (!calendarAddress || !durationMinutes)
+  if (!calendarAddress?.length || !durationMinutes)
     return (
-      <Container data-testid="container:book" maxW="container.xl" p={1}>
+      <Container data-testid="container:invalid-url" maxW="container.xl" p={1}>
         <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
           Hmm...
         </Heading>
@@ -126,11 +134,11 @@ const Book = () => {
       </Container>
     );
 
-  if (calendar?.address === calendarAddress)
+  if (address === calendarAddress)
     return (
-      <Container data-testid="container:book" maxW="container.xl" p={1}>
+      <Container data-testid="container:invalid-calendar" maxW="container.xl" p={1}>
         <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
-          Hey, that's your address!
+          Hey, that's you!
         </Heading>
         <Text fontFamily="Inter" color="#fff">
           Did you really want to book a meeting with yourself?
@@ -150,17 +158,6 @@ const Book = () => {
               booked for ${selectedTime
                 ?.toLocal()
                 .toLocaleString({ dateStyle: "full", timeStyle: "short" })}.`}
-          </Text>
-        </Container>
-      );
-    case BookingState.Error:
-      return (
-        <Container data-testid="container:book" maxW="container.xl" p={1}>
-          <Heading as="h1" color="raid.100" fontFamily="Mirza,serif">
-            Uh oh...
-          </Heading>
-          <Text fontFamily="Inter" color="#fff">
-            It looks like something went wrong :\
           </Text>
         </Container>
       );
