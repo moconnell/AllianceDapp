@@ -1,11 +1,16 @@
 import { render } from "@testing-library/react";
 import Calendar from "./index";
 
-jest.mock("react-calendar", () => () => "((ReactCalendar))");
-
 describe("<Calendar />", () => {
-  it("should render correctly", async () => {
-    const { asFragment } = render(<Calendar />);
-    expect(asFragment()).toMatchSnapshot();
-  });
+  const testData: [string, Date, ((date: Date) => boolean)?][] = [
+    ["render correctly", new Date("2022/05/22")],
+    ["render correctly", new Date("2022/05/22"), (date: Date) => date.getDay() > 0],
+  ];
+
+  testData.forEach(([name, defaultValue, tileDisabled]) =>
+    it(`should ${name}`, async () => {
+      const { asFragment } = render(<Calendar defaultValue={defaultValue} tileDisabled={tileDisabled} />);
+      expect(asFragment()).toMatchSnapshot();
+    })
+  );
 });
