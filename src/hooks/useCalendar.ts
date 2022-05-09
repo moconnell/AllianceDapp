@@ -148,29 +148,44 @@ export const useCalendar = () => {
   ]);
 
   const getMeetings = useCallback(
-    async (year: number, month: number, date: number) => {
+    async (date: Date) => {
       if (!calendar) return undefined;
 
-      console.log(`getMeetings(year: ${year}, month: ${month}, date: ${date})`);
+      console.log(`getMeetings(date: ${date})`);
 
-      const meetingsOnDate = await calendar.getMeetings(year, month, date);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      const meetingsOnDate = await calendar.getMeetings(year, month, day);
 
-      return meetingsOnDate.map((m) => {
-        let from = new Date(date);
-        from.setMinutes(m.startMinutes);
+      return meetingsOnDate.map(
+        ({ attendee, startMinutes, durationMinutes }) => {
+          const hour = Math.floor(startMinutes / 60);
+          const minute = startMinutes % 60;
+          const from = DateTime.fromObject(
+            {
+              year,
+              month,
+              day,
+              hour,
+              minute,
+            },
+            {
+              zone: availability?.timeZone,
+            }
+          ).setZone();
+          const to = from.plus({ minutes: durationMinutes });
 
-        let to = new Date(from);
-        to.setMinutes(to.getMinutes() + m.durationMinutes);
-
-        return {
-          date: from,
-          endDate: to,
-          attendee: m.attendee,
-          description: `${m.durationMinutes} minute meeting`,
-        } as Meeting;
-      });
+          return {
+            date: from,
+            endDate: to,
+            attendee: attendee,
+            description: `${durationMinutes} minute meeting`,
+          } as Meeting;
+        }
+      );
     },
-    [calendar]
+    [availability?.timeZone, calendar]
   );
 
   const getProfileAvailability = useCallback(

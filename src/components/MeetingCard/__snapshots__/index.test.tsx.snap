@@ -6,19 +6,19 @@ exports[`<MeetingCard /> should render correctly 1`] = `
     class="sc-bczRLJ lhfvPN"
   >
     <span
-      class="sc-hKMtZM AizOZ"
+      class="sc-hKMtZM cKEwGb"
     >
-      Wednesday, February 2, 2022 at 8:00 PM-8:30 PM
+      20:00-20:30
     </span>
     <span
-      class="sc-gsnTZi bBjkky"
+      class="sc-gsnTZi cMktXF"
     >
-      Dave Spart
+      0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
     </span>
     <span
       class="sc-dkzDqf ezVsXa"
     >
-      Random meeting
+      30 minute meeting
     </span>
   </div>
 </DocumentFragment>

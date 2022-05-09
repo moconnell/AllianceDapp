@@ -1,6 +1,8 @@
+import { DateTime } from "luxon";
+
 type Meeting = {
-  date: Date;
-  endDate: Date;
+  date: DateTime;
+  endDate: DateTime;
   attendee: string;
   description: string;
 };

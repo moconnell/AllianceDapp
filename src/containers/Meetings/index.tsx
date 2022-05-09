@@ -14,11 +14,7 @@ const Meetings = () => {
 
   useEffect(() => {
     async function loadMeetings() {
-      const meetingsOnDate = await getMeetings(
-        date.getFullYear(),
-        date.getMonth(),
-        date.getDate()
-      );
+      const meetingsOnDate = await getMeetings(date);
 
       if (meetingsOnDate) {
         console.log(`Meetings on ${date}`, meetingsOnDate);
@@ -39,10 +35,7 @@ const Meetings = () => {
           py={10}
           direction={{ base: "column", md: "row" }}
         >
-          <Calendar
-            defaultValue={date}
-            onChange={setDate}
-          />
+          <Calendar defaultValue={date} onChange={setDate} />
           <MeetingCardList meetings={meetings} />
         </Flex>
       </Content>

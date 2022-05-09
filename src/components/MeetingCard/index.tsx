@@ -1,5 +1,4 @@
 import Meeting from "../../types/meeting";
-import { formatDateTime, formatTime } from "../../utils/formatDate";
 import {
   DateText,
   CardContainer,
@@ -16,7 +15,7 @@ const MeetingCard = ({
 }: MeetingCardProps) => (
   <CardContainer>
     <DateText>
-      {formatDateTime(date)}-{formatTime(endDate)}
+      {`${date.toLocaleString({timeStyle: "short"})}-${endDate.toLocaleString({timeStyle: "short"})}`}
     </DateText>
     <Attendee>{attendee}</Attendee>
     <MeetingDescription>{description}</MeetingDescription>

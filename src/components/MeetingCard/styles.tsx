@@ -19,9 +19,12 @@ export const Attendee = styled.span`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 19px;
+  font-size: 1rem;
   color: #fff;
+  overflow: hidden;
+  max-width: 230px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const MeetingDescription = styled.span`
@@ -36,8 +39,7 @@ export const MeetingDescription = styled.span`
 export const DateText = styled.span`
   font-family: Inter;
   font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 0.9rem;
   line-height: 28px;
   color: #fff;
 `;

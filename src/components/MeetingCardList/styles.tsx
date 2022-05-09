@@ -5,12 +5,11 @@ export const MeetingCardContainer = styled.div`
   max-width: 250px;
   display: flex;
   flex-direction: column;
-  height: 450px;
   max-height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   scrollbar-color: #ff3864 transparent;
-  padding-right: 10px;
+  padding: 0 10px 0 10px;
 
   // For Google Chrome
   &::-webkit-scrollbar {
@@ -54,4 +53,25 @@ export const MeetingCardContainer = styled.div`
     background: #ff3864;
     padding: 0.5px;
   }
+`;
+
+export const Container = styled.div`
+padding: 15px 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+height: 400px;
+max-height: 400px;
+max-width: 250px;
+`;
+
+export const SubText = styled.div`
+  font-family: Inter;
+  font-style: normal;
+  font-size: 0.8em;
+  line-height: 1em;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  margin: 1.1em 0 0 0;
 `;
