@@ -1871,6 +1871,7 @@ exports[`<AvailabilityInput /> should render correctly 1`] = `
             <select
               aria-required="true"
               class="chakra-select css-1ik61og"
+              data-testid="select:from"
               id="field-3"
               name="from"
               required=""
@@ -2163,6 +2164,7 @@ exports[`<AvailabilityInput /> should render correctly 1`] = `
             <select
               aria-required="true"
               class="chakra-select css-1ik61og"
+              data-testid="select:to"
               id="field-4"
               name="to"
               required=""
@@ -4328,6 +4330,7 @@ exports[`<AvailabilityInput /> should render correctly 2`] = `
             <select
               aria-required="true"
               class="chakra-select css-1ik61og"
+              data-testid="select:from"
               id="field-8"
               name="from"
               required=""
@@ -4620,6 +4623,7 @@ exports[`<AvailabilityInput /> should render correctly 2`] = `
             <select
               aria-required="true"
               class="chakra-select css-1ik61og"
+              data-testid="select:to"
               id="field-9"
               name="to"
               required=""
@@ -6785,6 +6789,7 @@ exports[`<AvailabilityInput /> should render correctly 3`] = `
             <select
               aria-required="true"
               class="chakra-select css-1ik61og"
+              data-testid="select:from"
               id="field-13"
               name="from"
               required=""
@@ -7077,6 +7082,7 @@ exports[`<AvailabilityInput /> should render correctly 3`] = `
             <select
               aria-required="true"
               class="chakra-select css-1ik61og"
+              data-testid="select:to"
               id="field-14"
               name="to"
               required=""
@@ -9242,6 +9248,7 @@ exports[`<AvailabilityInput /> should render correctly 4`] = `
             <select
               aria-required="true"
               class="chakra-select css-1ik61og"
+              data-testid="select:from"
               id="field-18"
               name="from"
               required=""
@@ -9534,6 +9541,7 @@ exports[`<AvailabilityInput /> should render correctly 4`] = `
             <select
               aria-required="true"
               class="chakra-select css-1ik61og"
+              data-testid="select:to"
               id="field-19"
               name="to"
               required=""

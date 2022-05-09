@@ -45,6 +45,7 @@ const TimePicker = ({
 
   return (
     <Select
+      data-testid={`select:${name}`}
       name={name}
       value={value ? totalMinutes(value) : undefined}
       onChange={(e) => {
